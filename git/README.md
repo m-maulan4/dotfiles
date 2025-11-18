@@ -51,7 +51,7 @@ Tekan Enter untuk menerima lokasi default, bisa juga beri passphrase.
 
 ```bash
 eval "$(ssh-agent -s)"
-ssh-add ~/.ssh/id_rsa
+ssh-add ~/.ssh/id_ed25519
 ```
 
 ### 5.4. Tambahkan SSH key ke GitHub
@@ -59,7 +59,7 @@ ssh-add ~/.ssh/id_rsa
 1. Salin key:
 
 ```bash
-cat ~/.ssh/id_rsa.pub
+cat ~/.ssh/id_ed25519.pub
 ```
 
 2. Masuk ke GitHub → Settings → SSH and GPG keys → New SSH key → Paste → Save
