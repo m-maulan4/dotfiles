@@ -8,42 +8,42 @@ general {
 }
 
 # Configure individual modules
-#order += "read_file UPTIME"
 order += "wireless wlp3s0"
 order += "cpu_usage"
 order += "memory"
 order += "battery 0"
 order += "volume master"
-order += "disk /"
 order += "time"
 
 wireless wlp3s0 {
-    format_up = "WiFi %essid"
-    format_down = "DOWN"
+    format_up = " %essid"
+    format_down = "WiFi "
 }
 
 cpu_usage {
-    format = "CPU %usage"
+    format = " %usage"
 }
 
 memory {
-    format = "RAM %used"
+    format = " %used"
 }
 
 battery 0 {
-    format="BAT %percentage [%status]"
+    format="%status %percentage"
     last_full_capacity = true
-}
+    status_chr = ""
+    status_full = ""
+    status_bat = ""
+    status_idle  =""
 
-disk / {
-    format = "SSD %avail"
 }
 
 time {
     format = "%d-%m-%Y %H:%M "
 }
+
 volume master {
-    format = "Vol %volume"
-    format_muted = "Vol x%"
+    format = " %volume"
+    format_muted = " x%"
     device = "default"
 }
