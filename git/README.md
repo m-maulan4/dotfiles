@@ -1,6 +1,3 @@
-Oke! Saya akan buatkan **README.md ringkas versi terbaru** yang sudah termasuk **menghubungkan Git ke GitHub menggunakan SSH**:
-
-````markdown
 # Instalasi dan Konfigurasi Git di Linux + GitHub SSH
 
 ## 1. Instal Git
