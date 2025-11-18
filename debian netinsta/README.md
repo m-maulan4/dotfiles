@@ -9,7 +9,7 @@ Panduan singkat instalasi Debian Netinstall dengan tiling window manager **i3** 
 i3 xorg
 
 # File manager
-thunar
+thunar thunar-archive-plugin
 
 # Terminal
 xfce4-terminal
