@@ -1,1 +1,1 @@
-# I3Status perlu install font awesome
+# i3status perlu install font awesome
