@@ -195,6 +195,7 @@ focus_follows_mouse no
 # finds out, if available)
 bar {
         status_command i3status
+        padding 0 12px
 	position top
 	separator_symbol " | "
         font pango:Monospace, "Font Awesome 7 Free Solid 900"
