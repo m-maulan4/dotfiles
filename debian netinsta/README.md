@@ -48,10 +48,10 @@ Agar **NetworkManager** dapat mengatur Wi-Fi dengan benar, nonaktifkan konfigura
 
 **Komentari (tambahkan `#`) baris berikut**:
 ```bash
-# allow-hotplug wlp3s0
-# iface wlp3s0 inet dhcp
-# wpa-ssid NamaWifiKamu
-# wpa-psk PasswordWifiKamu
+allow-hotplug wlp3s0
+iface wlp3s0 inet dhcp
+wpa-ssid NamaWifiKamu
+wpa-psk PasswordWifiKamu
 ```
 
 Setelah itu, restart NetworkManager:
