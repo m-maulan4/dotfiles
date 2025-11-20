@@ -11,7 +11,8 @@ interval=5
 [volume]
 label=
 command=wpctl get-volume 54 | awk '{if ($3) {print "MUTE"} else {printf "%.0f%%\n", $2 * 100}}'
-interval=5
+interval=once
+signal=10
 
 [cpu]
 label=
