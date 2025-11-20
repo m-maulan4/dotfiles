@@ -10,8 +10,8 @@ interval=5
 
 [battery]
 label=
-command=acpi | awk '{print $5}' 
-interval=30
+command=acpi -b -a | awk -F', |: ' '/Battery/ {battery=$3}/Adapter/ {adapter=($2=="on-line"?"[CHR]":"")}END {print battery, adapter}'
+interval=10
 
 [volume]
 label=
