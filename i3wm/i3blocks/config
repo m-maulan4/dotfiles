@@ -1,3 +1,8 @@
+[title]
+label=
+command=xprop -id $(xprop -root _NET_ACTIVE_WINDOW | awk '{print $5}') WM_CLASS | awk -F', ' '{gsub(/"/,"",$2); gsub(/-/," ",$2); print $2}'
+interval=1
+
 [ssid]
 label= 
 command=nmcli -t -f NAME connection show --active | grep -v lo
