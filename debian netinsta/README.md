@@ -61,5 +61,20 @@ sudo systemctl restart NetworkManager
 
 Sekarang Wi-Fi bisa dikelola lewat `nmtui`.
 
+### 3. Merubah format input pada terminal
+
+**Lokasi konfigurasi**: 
+`.bashrc`
+
+
+**Tambah skrip ini**:
+```bash
+PS1="\[\e[01;32m\][\u]\[\e[0m\] \[\e[01;34m\]\w\[\e[0m\]\n=> "
+#untuk root tambah
+alias ls='ls --color=auto'
+```
+Ganti nama_user dengan username yang ingin auto-login.
+
 ## Selesai!
-Setup Debian + i3 kamu sekarang sudah ringan, stabil, dan fungsional dengan audio serta Wi-Fi yang berjalan normal.
+Setup Debian + i3 kamu sekarang sudah ringan, stabil, dan fungsional.
+
