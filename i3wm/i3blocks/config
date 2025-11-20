@@ -1,0 +1,29 @@
+[ssid]
+label= 
+command=nmcli -t -f NAME connection show --active | grep -v lo
+interval=5
+
+[bluetooth]
+label=
+command=device=$(bluetoothctl devices Connected | cut -d' ' -f4-); [ -z "$device" ] && echo "DOWN" || echo "$device"
+interval=5
+
+[volume]
+label=
+command=wpctl get-volume 54 | awk '{if ($3) {print "MUTE"} else {printf "%.0f%%\n", $2 * 100}}'
+interval=5
+
+[cpu]
+label=
+command=top -bn1 | grep "Cpu(s)" | awk '{print 100-$8"%"}'
+interval=5
+
+[ram]
+label=
+command=free -h --giga| awk '/Mem/ {print $3}'
+interval=5
+
+[date]
+label=
+command=date '+%d-%m-%Y %H:%M'
+interval=1
