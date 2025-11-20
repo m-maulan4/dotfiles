@@ -73,8 +73,6 @@ PS1="\[\e[01;32m\][\u]\[\e[0m\] \[\e[01;34m\]\w\[\e[0m\]\n=> "
 #untuk root tambah
 alias ls='ls --color=auto'
 ```
-Ganti nama_user dengan username yang ingin auto-login.
-
 ## Selesai!
 Setup Debian + i3 kamu sekarang sudah ringan, stabil, dan fungsional.
 
