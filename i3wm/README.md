@@ -1,1 +1,1 @@
-# i3status perlu install font awesome
+# i3status dan i3blocks perlu install font awesome
