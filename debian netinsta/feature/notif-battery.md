@@ -23,8 +23,6 @@ Sebuah script shell untuk memantau status baterai di Linux dan memberikan notifi
 battery_check.service       # Systemd service
 battery_check.timer         # Systemd timer
 
-````
-
 ---
 
 ## Instalasi
