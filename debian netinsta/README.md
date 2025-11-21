@@ -22,6 +22,9 @@ network-manager
 
 # Notifikasi
 libnotify-bin
+
+# Screenshot
+scrot
 ```
 
 ## Perbaikan / Fix yang Diperlukan
