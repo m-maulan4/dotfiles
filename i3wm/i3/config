@@ -184,7 +184,7 @@ exec_always --no-startup-id xset s noblank
 bindsym $mod+d exec rofi -show drun
 bindsym Mod1+Shift+Control+q exec ~/.config/i3/scripts/logout.sh
 bindsym Print exec --no-startup-id scrot ~/Pictures/%Y-%m-%d-%T.png
-bindsym Shift+Print exec --no-startup-id scrot -s ~/Pictures/sel-%Y-%m-%d-%T.png
+bindsym Shift+Print exec --no-startup-id scrot -s ~/Pictures/-%Y-%m-%d-%T.png
 
 
 # audio
