@@ -1,5 +1,5 @@
 # Battery Low Notification Script
-Perfect! Kita bisa buat agar skrip baterai ini **jalan otomatis di systemd user session** setiap beberapa menit, tanpa perlu cron. Berikut langkah lengkapnya:
+skrip baterai ini **jalan otomatis di systemd user session** setiap beberapa menit, tanpa perlu cron.
 
 ---
 
