@@ -28,7 +28,7 @@ Sebuah script shell untuk memantau status baterai di Linux dan memberikan notifi
 1. **Buat direktori scripts** (jika belum ada):
 
 ```bash
-mkdir -p ~/scripts
+mkdir -p ~~/.config/scripts
 ````
 
 2. **Simpan script** `battery_check.sh` ke folder `~/scripts/` :
