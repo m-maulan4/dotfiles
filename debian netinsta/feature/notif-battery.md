@@ -16,10 +16,10 @@ Sebuah script shell untuk memantau status baterai di Linux dan memberikan notifi
 
 ## Struktur File
 
-~/scripts/battery_check.sh      # Script utama
-~/.config/systemd/user/         # Folder systemd user
-battery_check.service       # Systemd service
-battery_check.timer         # Systemd timer
+- ~/scripts/battery_check.sh      # Script utama
+- ~/.config/systemd/user/         # Folder systemd user
+- battery_check.service       # Systemd service
+- battery_check.timer         # Systemd timer
 
 ---
 
