@@ -5,6 +5,10 @@ Perfect! Kita bisa buat agar skrip baterai ini **jalan otomatis di systemd user 
 
 ### 1️. Buat skrip notifikasi baterai
 
+Buat folder jika belum ada
+
+`mkdir -p ~/.local/bin/`
+
 Misal letakkan di `~/.local/bin/battery-alert.sh`:
 
 ```bash
@@ -30,6 +34,10 @@ chmod +x ~/.local/bin/battery-alert.sh
 ---
 
 ### 2️. Buat systemd service user
+
+Buat folder jika belum ada
+
+`mkdir -p ~/.config/systemd/user/`
 
 File: `~/.config/systemd/user/battery-alert.service`
 
@@ -84,9 +92,3 @@ systemctl --user enable --now battery-alert.timer
 ---
 
 ✅ Sekarang, skrip akan **otomatis mengecek baterai setiap 5 menit** dan menampilkan notifikasi jika kurang dari 20%.
-
----
-
-Kalau mau, saya bisa buatkan **versi lebih pintar** yang **hanya memberi notifikasi sekali per threshold** agar tidak muncul berulang-ulang setiap 5 menit saat baterai masih <20%. Ini lebih nyaman di laptop.
-
-Apakah mau saya buatkan versi itu juga?
