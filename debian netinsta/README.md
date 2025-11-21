@@ -19,6 +19,9 @@ pipewire pipewire-audio-client-libraries pipewire-pulse
 
 # Network
 network-manager
+
+# Notifikasi
+libnotify-bin
 ```
 
 ## Perbaikan / Fix yang Diperlukan
@@ -67,12 +70,14 @@ Sekarang Wi-Fi bisa dikelola lewat `nmtui`.
 `.bashrc`
 
 
-**Tambah skrip ini**:
+**Tambah atau ganti kode ini**:
 ```bash
+# untuk user
 PS1="\[\e[01;32m\][\u]\[\e[0m\] \[\e[01;34m\]\w\[\e[0m\]\n=> "
-#untuk root tambah
+# untuk root 
+PS1="\[\e[01;31m\][\u]\[\e[0m\] \[\e[01;34m\]\w\[\e[0m\]\n=> "
 alias ls='ls --color=auto'
 ```
+
 ## Selesai!
 Setup Debian + i3 kamu sekarang sudah ringan, stabil, dan fungsional.
-
