@@ -1,6 +1,3 @@
-Tentu! Berikut contoh `README.md` untuk dokumentasi script dan setup systemd Anda:
-
-```markdown
 # Battery Low Notification Script
 
 Sebuah script shell untuk memantau status baterai di Linux dan memberikan notifikasi jika baterai rendah (<20%). Script ini dijalankan secara otomatis menggunakan `systemd user` timer setiap beberapa menit dan saat boot.
@@ -19,7 +16,7 @@ Sebuah script shell untuk memantau status baterai di Linux dan memberikan notifi
 
 ## Struktur File
 
-```
+
 
 ~/scripts/battery_check.sh      # Script utama
 ~/.config/systemd/user/         # Folder systemd user
