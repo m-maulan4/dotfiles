@@ -16,8 +16,6 @@ Sebuah script shell untuk memantau status baterai di Linux dan memberikan notifi
 
 ## Struktur File
 
-
-
 ~/scripts/battery_check.sh      # Script utama
 ~/.config/systemd/user/         # Folder systemd user
 battery_check.service       # Systemd service
@@ -33,8 +31,25 @@ battery_check.timer         # Systemd timer
 mkdir -p ~/scripts
 ````
 
-2. **Simpan script** `battery_check.sh` ke folder `~/scripts/` dan buat executable:
+2. **Simpan script** `battery_check.sh` ke folder `~/scripts/` :
+```bash
+#!/bin/bash
 
+# Temukan session display dan DBUS secara otomatis
+export DISPLAY=$(loginctl list-sessions | awk '$2=="'"$USER"'" {print $1}' | xargs -I{} loginctl show-session {} -p Display | cut -d= -f2)
+export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$(id -u)/bus"
+
+# Ambil status baterai
+PERCENT=$(acpi -b | grep -P -o '[0-9]+(?=%)')
+STATUS=$(acpi -b | awk '{print $3}' | tr -d ',')
+
+# Kirim notifikasi jika baterai rendah
+if [ "$STATUS" = "Discharging" ] && [ "$PERCENT" -lt 20 ]; then
+    notify-send -t 2000 --urgency=critical "Baterai lemah" "Sisa baterai: ${PERCENT}%"
+fi
+
+```
+Buat file ini executable:
 ```bash
 chmod +x ~/scripts/battery_check.sh
 ```
