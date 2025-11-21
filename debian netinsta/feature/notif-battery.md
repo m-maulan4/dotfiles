@@ -1,122 +1,92 @@
 # Battery Low Notification Script
-
-Sebuah script shell untuk memantau status baterai di Linux dan memberikan notifikasi jika baterai rendah (<20%). Script ini dijalankan secara otomatis menggunakan `systemd user` timer setiap beberapa menit dan saat boot.
-
----
-
-## Fitur
-
-- Memeriksa status baterai (`Discharging`) dan persentase baterai.
-- Memberikan notifikasi desktop menggunakan `notify-send` jika baterai kurang dari 20%.
-- Dijalankan secara otomatis saat boot dan setiap interval tertentu (default: setiap 5 menit).
-- Mendukung setup `systemd user`, sehingga berjalan tanpa hak root.
-- Otomatis mendeteksi `DISPLAY` dan `DBUS_SESSION_BUS_ADDRESS` untuk notifikasi.
+Perfect! Kita bisa buat agar skrip baterai ini **jalan otomatis di systemd user session** setiap beberapa menit, tanpa perlu cron. Berikut langkah lengkapnya:
 
 ---
 
-## Struktur File
+### 1️. Buat skrip notifikasi baterai
 
-- ~/.config/scripts/battery_check.sh      # Script utama
-- ~/.config/systemd/user/         # Folder systemd user
-- battery_check.service       # Systemd service
-- battery_check.timer         # Systemd timer
+Misal letakkan di `~/.local/bin/battery-alert.sh`:
 
----
-
-## Instalasi
-
-1. **Buat direktori scripts** (jika belum ada):
-
-```bash
-mkdir -p ~/.config/scripts
-````
-
-2. **Simpan script** `battery_check.sh` ke folder `~/.config/scripts/` :
 ```bash
 #!/bin/bash
 
-# Temukan session display dan DBUS secara otomatis
-export DISPLAY=$(loginctl list-sessions | awk '$2=="'"$USER"'" {print $1}' | xargs -I{} loginctl show-session {} -p Display | cut -d= -f2)
-export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$(id -u)/bus"
-
 # Ambil status baterai
-PERCENT=$(acpi -b | grep -P -o '[0-9]+(?=%)')
-STATUS=$(acpi -b | awk '{print $3}' | tr -d ',')
+battery_info=$(acpi -b)
+percent=$(echo "$battery_info" | grep -oP '\d+(?=%)')
+status=$(echo "$battery_info" | awk '{print $3}' | tr -d ',')
 
 # Kirim notifikasi jika baterai rendah
-if [ "$STATUS" = "Discharging" ] && [ "$PERCENT" -lt 20 ]; then
-    notify-send -t 2000 --urgency=critical "Baterai lemah" "Sisa baterai: ${PERCENT}%"
+if [[ "$status" == "Discharging" && "$percent" -lt 20 ]]; then
+    notify-send -u critical "Baterai Lemah" "Sisa baterai: ${percent}%"
 fi
-
-```
-Buat file ini executable:
-```bash
-chmod +x ~/scripts/battery_check.sh
 ```
 
-3. **Buat folder systemd user** (jika belum ada):
+Jangan lupa beri executable:
 
 ```bash
-mkdir -p ~/.config/systemd/user
+chmod +x ~/.local/bin/battery-alert.sh
 ```
 
-4. **Buat service** `battery_check.service`:
+---
+
+### 2️. Buat systemd service user
+
+File: `~/.config/systemd/user/battery-alert.service`
 
 ```ini
 [Unit]
-Description=Cek baterai dan beri notifikasi
+Description=Notifikasi baterai lemah
 
 [Service]
 Type=oneshot
-ExecStart=/home/username/scripts/battery_check.sh
+ExecStart=%h/.local/bin/battery-alert.sh
 ```
 
-> Ganti `/home/username/scripts/battery_check.sh` sesuai path script Anda.
+* `Type=oneshot` karena skrip cuma jalan sekali tiap pemanggilan.
 
-5. **Buat timer** `battery_check.timer`:
+---
+
+### 3️. Buat systemd timer
+
+File: `~/.config/systemd/user/battery-alert.timer`
 
 ```ini
 [Unit]
-Description=Timer untuk cek baterai setiap 5 menit
+Description=Timer untuk notifikasi baterai lemah
 
 [Timer]
-OnBootSec=1min
+OnBootSec=2min
 OnUnitActiveSec=5min
-Unit=battery_check.service
+Persistent=true
 
 [Install]
 WantedBy=default.target
 ```
 
-6. **Reload systemd user, aktifkan dan jalankan timer**:
+* `OnBootSec=2min` → jalankan 2 menit setelah login.
+* `OnUnitActiveSec=5min` → jalankan ulang setiap 5 menit.
+* `Persistent=true` → kalau komputer mati/hibernasi, jalankan segera saat kembali.
+
+---
+
+### 4️. Aktifkan service & timer
+
+Jalankan perintah berikut:
 
 ```bash
 systemctl --user daemon-reload
-systemctl --user enable --now battery_check.timer
-systemctl --user status battery_check.timer
+systemctl --user enable --now battery-alert.timer
 ```
 
----
-
-## Cara Kerja
-
-1. Script dijalankan oleh `systemd` setiap 5 menit dan saat boot.
-2. Script memeriksa status baterai menggunakan `acpi`.
-3. Jika status adalah `Discharging` dan persentase baterai < 20%, maka `notify-send` akan menampilkan peringatan.
+* `enable` → supaya otomatis jalan tiap login.
+* `--now` → langsung mulai timer sekarang juga.
 
 ---
 
-## Tips
-
-* Pastikan `acpi` dan `libnotify-bin` sudah terinstall:
-
-```bash
-sudo apt install acpi libnotify-bin
-```
-
-* Script otomatis mendeteksi session untuk notifikasi. Tidak perlu menjalankan dengan root.
-
-* Untuk menyesuaikan interval cek, ubah `OnUnitActiveSec` di file `battery_check.timer`.
+✅ Sekarang, skrip akan **otomatis mengecek baterai setiap 5 menit** dan menampilkan notifikasi jika kurang dari 20%.
 
 ---
 
+Kalau mau, saya bisa buatkan **versi lebih pintar** yang **hanya memberi notifikasi sekali per threshold** agar tidak muncul berulang-ulang setiap 5 menit saat baterai masih <20%. Ini lebih nyaman di laptop.
+
+Apakah mau saya buatkan versi itu juga?
