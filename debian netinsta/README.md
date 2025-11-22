@@ -82,5 +82,16 @@ PS1="\[\e[01;31m\][\u]\[\e[0m\] \[\e[01;34m\]\w\[\e[0m\]\n=> "
 alias ls='ls --color=auto'
 ```
 
+## 4. **Setting battery threshold**
+
+Misal kita ingin baterai mulai mengisi di **40%** dan berhenti di **80%**:
+
+```bash
+echo 40 | sudo tee /sys/class/power_supply/BAT0/charge_control_start_threshold
+echo 80 | sudo tee /sys/class/power_supply/BAT0/charge_control_end_threshold
+```
+
+> Catatan: Nilai harus antara 0–100, dan `start_threshold` harus lebih kecil dari `end_threshold`.
+
 ## Selesai!
 Setup Debian + i3 kamu sekarang sudah ringan, stabil, dan fungsional.
