@@ -117,4 +117,10 @@ systemctl --user enable --now battery-alert.timer
 
 ---
 
+## 6. Cek dunst pada config I3WM
+
+tambahakan perintah `exec --no-startup-id dunst` di file `~/.config/i3/config` supaya notify-send berlajan.
+
+----
+
 ✅ Sekarang, skrip akan **otomatis mengecek baterai setiap 1 menit** dan menampilkan notifikasi jika kurang dari 20%.
