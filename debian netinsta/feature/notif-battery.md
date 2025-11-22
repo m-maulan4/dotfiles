@@ -119,7 +119,7 @@ systemctl --user enable --now battery-alert.timer
 
 ## 6. Cek dunst pada config I3WM
 
-tambahakan perintah `exec --no-startup-id dunst` di file `~/.config/i3/config` supaya notify-send berlajan.
+tambahakan perintah `exec_always --no-startup-id pkill dunst; dunst &` di file `~/.config/i3/config` supaya notify-send berlajan.
 
 ----
 
