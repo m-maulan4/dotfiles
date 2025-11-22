@@ -3,7 +3,7 @@ skrip baterai ini **jalan otomatis di systemd user session** setiap beberapa men
 
 ---
 
-### 1️. Buat skrip notifikasi baterai
+## 1️. Buat skrip notifikasi baterai
 
 Buat folder jika belum ada
 
@@ -33,7 +33,7 @@ chmod +x ~/.local/bin/battery-alert.sh
 
 ---
 
-### 2️. Buat systemd service user
+## 2️. Buat systemd service user
 
 Buat folder jika belum ada
 
@@ -79,7 +79,7 @@ echo "DBUS_SESSION_BUS_ADDRESS=$DBUS_SESSION_BUS_ADDRESS" >> ~/.config/systemd/u
 * Service systemd membaca environment ini, jadi tidak perlu hardcode.
 ---
 
-### 4. Buat systemd timer
+## 4. Buat systemd timer
 
 File: `~/.config/systemd/user/battery-alert.timer`
 
@@ -102,7 +102,7 @@ WantedBy=default.target
 
 ---
 
-### 5. Aktifkan service & timer
+## 5. Aktifkan service & timer
 
 Jalankan perintah berikut:
 

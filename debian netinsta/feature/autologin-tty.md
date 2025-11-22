@@ -1,4 +1,4 @@
-## Auto login di TTY
+# Auto login di TTY
 
 ---
 
