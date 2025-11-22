@@ -74,7 +74,7 @@ path (jika tidak ada buat dulu filenya):
 echo "DISPLAY=$DISPLAY" > ~/.config/systemd/user/battery-env.conf
 echo "DBUS_SESSION_BUS_ADDRESS=$DBUS_SESSION_BUS_ADDRESS" >> ~/.config/systemd/user/battery-env.conf
 ```
-> Pastikan dalam file `.xinitrc` ada baris perintah `exec i3` supaya bisa login lewat startx
+> Pastikan dalam file `.xinitrc` ada baris perintah `exec i3` supaya bisa login lewat startx di terminal tty.
 
 * Jadi setiap login X session, `battery-env.conf` diperbarui otomatis.
 * Service systemd membaca environment ini, jadi tidak perlu hardcode.
