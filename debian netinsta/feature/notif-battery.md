@@ -65,7 +65,7 @@ DISPLAY=:0
 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
 ```
 
-Tapi kita bisa **otomatiskan pengisiannya**. Tambahkan ini di `.xprofile` atau `.xinitrc`:
+Kita bisa **otomatiskan pengisiannya**. Tambahkan ini di `.xprofile` atau `.xinitrc`:
 
 path (jika tidak ada buat dulu filenya):
 `~/.xinitrc`
@@ -74,6 +74,7 @@ path (jika tidak ada buat dulu filenya):
 echo "DISPLAY=$DISPLAY" > ~/.config/systemd/user/battery-env.conf
 echo "DBUS_SESSION_BUS_ADDRESS=$DBUS_SESSION_BUS_ADDRESS" >> ~/.config/systemd/user/battery-env.conf
 ```
+> pastikan dalam file `.xinitrc` ada baring `exec i3` supaya bisa login lewat startx
 
 * Jadi setiap login X session, `battery-env.conf` diperbarui otomatis.
 * Service systemd membaca environment ini, jadi tidak perlu hardcode.
