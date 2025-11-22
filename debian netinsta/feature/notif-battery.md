@@ -21,7 +21,7 @@ status=$(echo "$battery_info" | awk '{print $3}' | tr -d ',')
 
 # Kirim notifikasi jika baterai rendah
 if [[ "$status" == "Discharging" && "$percent" -lt 20 ]]; then
-    notify-send -u critical "Baterai Lemah" "Sisa baterai: ${percent}%"
+    notify-send -u critical -t 5000 "Baterai Lemah" "Sisa baterai: ${percent}%"
 fi
 ```
 
