@@ -1,4 +1,4 @@
-## Auto login di TTY (terminal text mode)**
+## Auto login di TTY
 
 ---
 
