@@ -1,4 +1,4 @@
-Oke! Kalau ingin **mengatur battery threshold otomatis dengan hak akses root** tanpa harus memasukkan password di i3wm, cara paling aman adalah membuat **systemd service**. Berikut panduan lengkap:
+# Setting battery threshold di systemd service
 
 ---
 
