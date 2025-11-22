@@ -67,7 +67,7 @@ DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
 
 Tapi kita bisa **otomatiskan pengisiannya**. Tambahkan ini di `.xprofile` atau `.xinitrc`:
 
-path:
+path (jika tidak ada buat dulu filenya):
 `~/.xinitrc`
 
 ```bash
