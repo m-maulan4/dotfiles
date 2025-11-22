@@ -47,14 +47,39 @@ Description=Notifikasi baterai lemah
 
 [Service]
 Type=oneshot
+EnvironmentFile=%h/.config/systemd/user/battery-env.conf
 ExecStart=%h/.local/bin/battery-alert.sh
 ```
 
 * `Type=oneshot` karena skrip cuma jalan sekali tiap pemanggilan.
 
 ---
+## 3️. Buat file environment otomatis
 
-### 3️. Buat systemd timer
+File: `~/.config/systemd/user/battery-env.conf`
+
+Isi file ini bisa dibuat otomatis saat login i3wm:
+
+```bash
+DISPLAY=:0
+DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+```
+
+Tapi kita bisa **otomatiskan pengisiannya**. Tambahkan ini di `.xprofile` atau `.xinitrc`:
+
+path:
+`~/.xinitrc`
+
+```bash
+echo "DISPLAY=$DISPLAY" > ~/.config/systemd/user/battery-env.conf
+echo "DBUS_SESSION_BUS_ADDRESS=$DBUS_SESSION_BUS_ADDRESS" >> ~/.config/systemd/user/battery-env.conf
+```
+
+* Jadi setiap login X session, `battery-env.conf` diperbarui otomatis.
+* Service systemd membaca environment ini, jadi tidak perlu hardcode.
+---
+
+### 4. Buat systemd timer
 
 File: `~/.config/systemd/user/battery-alert.timer`
 
@@ -64,7 +89,7 @@ Description=Timer untuk notifikasi baterai lemah
 
 [Timer]
 OnBootSec=2min
-OnUnitActiveSec=5min
+OnUnitActiveSec=1min
 Persistent=true
 
 [Install]
@@ -72,12 +97,12 @@ WantedBy=default.target
 ```
 
 * `OnBootSec=2min` → jalankan 2 menit setelah login.
-* `OnUnitActiveSec=5min` → jalankan ulang setiap 5 menit.
+* `OnUnitActiveSec=1min` → jalankan ulang setiap 1 menit.
 * `Persistent=true` → kalau komputer mati/hibernasi, jalankan segera saat kembali.
 
 ---
 
-### 4️. Aktifkan service & timer
+### 5. Aktifkan service & timer
 
 Jalankan perintah berikut:
 
@@ -91,4 +116,4 @@ systemctl --user enable --now battery-alert.timer
 
 ---
 
-✅ Sekarang, skrip akan **otomatis mengecek baterai setiap 5 menit** dan menampilkan notifikasi jika kurang dari 20%.
+✅ Sekarang, skrip akan **otomatis mengecek baterai setiap 1 menit** dan menampilkan notifikasi jika kurang dari 20%.
