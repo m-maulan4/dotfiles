@@ -25,6 +25,9 @@ libnotify-bin dunst
 
 # Screenshot
 scrot
+
+#Clipboard CLI
+xclip
 ```
 
 ## Perbaikan / Fix yang Diperlukan

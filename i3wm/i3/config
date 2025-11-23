@@ -184,6 +184,7 @@ exec_always --no-startup-id pkill dunst; dunst &
 
 # keybinding
 bindsym $mod+d exec rofi -show drun
+bindsym $mod+c exec --no-startup-id ~/.config/i3/scripts/clipboard.sh
 bindsym Mod1+Shift+Control+q exec ~/.config/i3/scripts/logout.sh
 bindsym Print exec --no-startup-id scrot ~/Pictures/%Y-%m-%d-%T.png
 bindsym Shift+Print exec --no-startup-id scrot -s ~/Pictures/-%Y-%m-%d-%T.png
