@@ -31,10 +31,10 @@ Jika menggunakan `thinkpad_acpi`:
 
 ```bash
 # Atur start charging
-echo 40 | sudo tee /sys/class/power_supply/BAT0/charge_start_threshold
+echo 40 | tee /sys/class/power_supply/BAT0/charge_start_threshold
 
 # Atur stop charging
-echo 80 | sudo tee /sys/class/power_supply/BAT0/charge_stop_threshold
+echo 80 | tee /sys/class/power_supply/BAT0/charge_stop_threshold
 ```
 
 **Penjelasan:**
@@ -66,8 +66,8 @@ WantedBy=multi-user.target
 Simpan di `/etc/systemd/system/battery-threshold.service` lalu aktifkan:
 
 ```bash
-sudo systemctl enable battery-threshold.service
-sudo systemctl start battery-threshold.service
+systemctl enable battery-threshold.service
+systemctl start battery-threshold.service
 ```
 
 ---
