@@ -2,8 +2,6 @@
 
 # File history clipboard
 CLIPFILE="$HOME/.cache/clipboard_history.txt"
-MAX_HISTORY=100        # Maksimal item di history
-TRIM_HISTORY=80        # Trim otomatis jika lebih dari MAX_HISTORY
 
 # Fungsi: simpan clipboard saat ini
 save_clipboard() {
@@ -14,8 +12,6 @@ save_clipboard() {
         grep -Fxv "$current" "$CLIPFILE" 2>/dev/null > "$CLIPFILE.tmp" 2>/dev/null || true
         echo "$current" >> "$CLIPFILE.tmp"
         mv "$CLIPFILE.tmp" "$CLIPFILE"
-        # Trim history jika terlalu panjang
-        tail -n $TRIM_HISTORY "$CLIPFILE" > "$CLIPFILE.tmp" && mv "$CLIPFILE.tmp" "$CLIPFILE"
     fi
 }
 
