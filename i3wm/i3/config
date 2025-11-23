@@ -172,6 +172,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # === custom ===
+workspace "9" output HDMI-1
 
 # startup
 exec_always --no-startup-id xrandr --output eDP-1 --scale 0.8x0.8
