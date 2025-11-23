@@ -7,7 +7,7 @@ selected=$(echo "$workspaces" | rofi -dmenu -p "Workspace")
 
 # Jika tidak ada workspace non-aktif, keluar
 if [ -z "$workspaces" ]; then
-    notify-send "Tidak ada workspace yang aktif"
+    notify-send -t 5000 "Tidak ada workspace yang aktif"
     exit 0
 fi
 
