@@ -188,7 +188,7 @@ bindsym $mod+c exec ~/.config/i3/scripts/script.sh clipboard
 bindsym Mod1+Shift+Control+q exec ~/.config/i3/scripts/script.sh logout
 bindsym Print exec scrot ~/Pictures/%Y-%m-%d-%T.png
 bindsym Shift+Print exec scrot -s ~/Pictures/l-%Y-%m-%d-%T.png
-bindsym Mod1+Tab exec ~/.config/i3/scripts/script.sh switch-workspaces
+bindsym $mod+Tab exec ~/.config/i3/scripts/script.sh switch-workspaces
 
 
 # audio
