@@ -1,38 +1,38 @@
 [title]
 label=
-command=xprop -id $(xprop -root _NET_ACTIVE_WINDOW | awk '{print $5}') WM_CLASS | awk -F', ' '{gsub(/"/,"",$2); gsub(/-/," ",$2); print $2}'
+command=~/.config/i3blocks/scripts/script.sh title
 interval=1
 
 [ssid]
-label= 
-command=nmcli -t -f NAME connection show --active | grep -v lo
+label=
+command=~/.config/i3blocks/scripts/script.sh wifi
 interval=5
 
 [bluetooth]
 label=
-command=device=$(bluetoothctl devices Connected | cut -d' ' -f4-); [ -z "$device" ] && echo "DOWN" || echo "$device"
+command=~/.config/i3blocks/scripts/script.sh bt
 interval=5
-
-[battery]
-label=
-command=acpi -b -a | awk -F', |: ' '/Battery/ {battery=$3}/Adapter/ {adapter=($2=="on-line"?"[CHR]":"")}END {print battery, adapter}'
-interval=10
 
 [volume]
 label=
-command=wpctl get-volume 54 | awk '{if ($3) {print "MUTE"} else {printf "%.0f%%\n", $2 * 100}}'
+command=~/.config/i3blocks/scripts/script.sh vol
 interval=once
 signal=10
 
 [cpu]
 label=
-command=top -bn1 | grep "Cpu(s)" | awk '{print 100-$8"%"}'
+command=~/.config/i3blocks/scripts/script.sh cpu
 interval=3
 
 [ram]
 label=
-command=free -h --giga| awk '/Mem/ {print $3}'
+command=~/.config/i3blocks/scripts/script.sh ram
 interval=3
+
+[battery]
+label=
+command=~/.config/i3blocks/scripts/script.sh bat
+interval=5
 
 [date]
 label=
