@@ -1,8 +1,9 @@
 #!/bin/bash
 title(){
     CheckIdWorkspace=$(xprop -root _NET_ACTIVE_WINDOW | awk '{print $5}')
-    Title=$(xprop -id $CheckIdWorkspace 'WM_CLASS' | awk '{print $4}' | tr -d '"' )
-    echo $Title
+    Title=$(xprop -id $CheckIdWorkspace 'WM_CLASS' | awk '{gsub(/"/,"",$4); gsub(/-/," ",$4); print $4}' )
+    Color=$(head /dev/urandom | tr -dc 0-9A-F | head -c 6)
+    echo -e "$Title\n\n#$Color"
 }
 wifi(){
     WiFi=$(nmcli -t -f NAME connection show --active | grep -v lo)
@@ -26,14 +27,15 @@ bt(){
 }
 vol(){
     CheckIdVol=$(wpctl status | grep "Built-in Audio Analog Stereo" | awk '{print $3}'| head -n1 |sed 's/\.//')
-    VOL=$(wpctl get-volume $CheckIdVol | awk '{print ($3 ? "MUTE" : sprintf("%.0f%%", $2*100))}')
-    if [ "$VOL" = "MUTE" ]; then
-        VOL="MUTE"
-        Color="#FF0000"
-        echo -e "$VOL\n\n$Color"
-    else
-        echo $VOL
-    fi
+    VOL=$(wpctl get-volume $CheckIdVol | awk '{print ($3 ? "MUTE" : int($2*100))}')
+    Color=$(awk -v vol="$VOL" 'BEGIN {
+    if (vol == "MUTE")      { print "#FF0000" }
+    else if (vol >= 75)    { print "#00FF00" }
+    else if (vol >= 50)     { print "#33CC00" }
+    else if (vol >= 25)     { print "#669900" }
+    else { print "#336600" }
+    }')
+    echo -e "$VOL\n\n$Color"
 }
 cpu(){
     CPU=$(top -bn1 | grep "Cpu(s)" | awk '{print $2+$4+$6+$10+$12+$14}')
