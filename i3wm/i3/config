@@ -184,11 +184,11 @@ exec_always --no-startup-id pkill dunst; dunst &
 
 # keybinding
 bindsym $mod+d exec rofi -show drun
-bindsym $mod+c exec ~/.config/i3/scripts/scripts.sh clipboard
-bindsym Mod1+Shift+Control+q exec ~/.config/i3/scripts/scripts.sh logout
+bindsym $mod+c exec ~/.config/i3/scripts/script.sh clipboard
+bindsym Mod1+Shift+Control+q exec ~/.config/i3/scripts/script.sh logout
 bindsym Print exec scrot ~/Pictures/%Y-%m-%d-%T.png
 bindsym Shift+Print exec scrot -s ~/Pictures/l-%Y-%m-%d-%T.png
-bindsym Mod1+Tab exec ~/.config/i3/scripts/scripts.sh switch-workspaces
+bindsym Mod1+Tab exec ~/.config/i3/scripts/script.sh switch-workspaces
 
 
 # audio
@@ -198,8 +198,8 @@ bindsym Mod1+Tab exec ~/.config/i3/scripts/scripts.sh switch-workspaces
 # bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && $refresh_i3status
 # bindsym XF86AudioMicMute exec wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle && $refresh_i3status
 # with i3blocks
-bindsym XF86AudioRaiseVolume exec ~/.config/i3/scripts/scripts.sh volume_up
-bindsym XF86AudioLowerVolume exec ~/.config/i3/scripts/scripts.sh volume_down
+bindsym XF86AudioRaiseVolume exec ~/.config/i3/scripts/script.sh volume_up
+bindsym XF86AudioLowerVolume exec ~/.config/i3/scripts/script.sh volume_down
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && pkill -SIGRTMIN+10 i3blocks
 bindsym XF86AudioMicMute exec wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle && pkill -SIGRTMIN+10 i3blocks
 
