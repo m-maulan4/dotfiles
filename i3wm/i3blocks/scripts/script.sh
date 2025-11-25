@@ -1,9 +1,15 @@
 #!/bin/bash
+
+random_color(){
+    r=$(( 150 + RANDOM % 106 ))  # 150-255
+    g=$(( 150 + RANDOM % 106 ))  # 150-255  
+    b=$(( 150 + RANDOM % 106 ))  # 150-255
+    printf "#%02X%02X%02X\n" "$r" "$g" "$b"
+}
 title(){
     CheckIdWorkspace=$(xprop -root _NET_ACTIVE_WINDOW | awk '{print $5}')
     Title=$(xprop -id $CheckIdWorkspace 'WM_CLASS' | awk '{gsub(/"/,"",$4); gsub(/-/," ",$4); print $4}' )
-    Color=$(head /dev/urandom | tr -dc 8-9A-F | head -c 6)
-    echo "<span color='#$Color'>$Title</span>"
+    echo "<span color='$(random_color)'>$Title</span>"
 
 }
 wifi(){
@@ -71,8 +77,11 @@ bat(){
     echo "<span color='$Color'> $VALUE% $STATUS</span>"
 }
 dt(){
-    DATE=$(date '+%d-%m-%Y %H:%M')
-    echo $DATE
+    DATE=$(date '+%d-%m-%Y')
+    echo "<span color='$(random_color)'> $DATE</span>"
 }
-
-echo "$(title) | $(wifi) | $(bt) | $(vol) | $(cpu) | $(ram) | $(bat) | $(dt)"
+tm(){
+    TIME=$(date '+%H:%M')
+    echo "<span color='$(random_color)'> $TIME</span>"
+}
+echo "$(title) | $(wifi) | $(bt) | $(vol) | $(cpu) | $(ram) | $(bat) | $(dt) | $(tm)"
