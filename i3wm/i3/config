@@ -172,6 +172,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # === custom ===
+# Workspace
 workspace "9" output HDMI-1
 
 # startup
@@ -189,7 +190,7 @@ bindsym Mod1+Shift+Control+q exec ~/.config/i3/scripts/script.sh logout
 bindsym Print exec scrot ~/Pictures/%Y-%m-%d-%T.png
 bindsym Shift+Print exec scrot -s ~/Pictures/l-%Y-%m-%d-%T.png
 bindsym $mod+Tab exec ~/.config/i3/scripts/script.sh switch-workspaces
-
+bindsym Mod1+Tab focus next
 
 # audio
 # with i3status
