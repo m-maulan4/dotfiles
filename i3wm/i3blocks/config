@@ -1,40 +1,4 @@
-[title]
-label=
-command=~/.config/i3blocks/scripts/script.sh title
+[bar]
+command=~/.config/i3blocks/scripts/test.sh
 interval=1
-
-[ssid]
-label=
-command=~/.config/i3blocks/scripts/script.sh wifi
-interval=5
-
-[bluetooth]
-label=
-command=~/.config/i3blocks/scripts/script.sh bt
-interval=5
-
-[volume]
-label=
-command=~/.config/i3blocks/scripts/script.sh vol
-interval=once
-signal=10
-
-[cpu]
-label=
-command=~/.config/i3blocks/scripts/script.sh cpu
-interval=3
-
-[ram]
-label=
-command=~/.config/i3blocks/scripts/script.sh ram
-interval=3
-
-[battery]
-label=
-command=~/.config/i3blocks/scripts/script.sh bat
-interval=5
-
-[date]
-label=
-command=date '+%d-%m-%Y %H:%M'
-interval=1
+markup=pango
