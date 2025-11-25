@@ -72,12 +72,11 @@ bat(){
 }
 dt(){
     DATE=$(date '+%d-%m-%Y')
-    TIME=$(date '+%H:%M')
+    TIME=$(date '+%H:%M:$S')
     echo "{\"color\":\"#FFFFFF\",\"full_text\":\" $DATE  $TIME\"}"
 }
 echo '{"version":1}'
 echo '['
-echo '[],'
 
 while true; do
     echo "[$(title),$(wifi),$(bt),$(vol),$(cpu),$(ram),$(bat),$(dt)],"
