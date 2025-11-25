@@ -26,8 +26,11 @@ dunst
 # Screenshot
 scrot
 
-#Clipboard CLI
+# Clipboard CLI
 xclip
+
+# Compositor
+picom
 ```
 
 ## Perbaikan / Fix yang Diperlukan

@@ -1,22 +1,9 @@
 #!/bin/bash
 
-random_color(){
-colors=(
-    "#FFFFFF"
-    "#FF0000"
-    "#00FF00"
-    "#0000FF"
-    "#FFFF00"
-    "#FF00FF"
-    "#00FFFF"
-)
-rand_color=${colors[$RANDOM % ${#colors[@]}]}
-echo $rand_color
-}
 title(){
     CheckIdWorkspace=$(xprop -root _NET_ACTIVE_WINDOW | awk '{print $5}')
     Title=$(xprop -id $CheckIdWorkspace 'WM_CLASS' | awk '{gsub(/"/,"",$4); gsub(/-/," ",$4); print $4}' )
-    echo "{\"color\":\"$(random_color)\",\"full_text\":\"$Title\"}"
+    echo "{\"color\":\"#FFFFFF\",\"full_text\":\"$Title\"}"
 
 }
 wifi(){
