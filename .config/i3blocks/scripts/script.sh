@@ -55,8 +55,8 @@ cpu(){
     echo "<span color='$Color'> $INT%</span>"
 }
 ram(){
-    TRam=$(free -h | head -n 2 | tail -n 1 | awk '{gsub(/Gi/,"");print $2}')
-    TUsage=$(free -h | head -n 2 | tail -n 1 | awk '{gsub(/Gi/,"");print $3}')
+    TRam=$(free -w | head -n 2 | tail -n 1 | awk '{print $2}' | sed 's/..$//')
+    TUsage=$(free -w | head -n 2 | tail -n 1 | awk '{print $3}' | sed 's/..$//')
     RAM=$(awk "BEGIN {printf int($TUsage/$TRam*100)}")
     Color=$(awk -v ram="$RAM" 'BEGIN {if(ram>=70) print "#FF0000"; else print "#00FF00"}')
     echo "<span color='$Color'> $RAM%</span>"
