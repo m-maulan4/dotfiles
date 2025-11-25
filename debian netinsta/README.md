@@ -21,7 +21,7 @@ pipewire pipewire-audio-client-libraries pipewire-pulse
 network-manager
 
 # Notifikasi
-libnotify-bin dunst
+dunst
 
 # Screenshot
 scrot
