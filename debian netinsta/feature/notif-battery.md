@@ -14,14 +14,14 @@ Misal letakkan di `~/.local/bin/battery-alert.sh`:
 ```bash
 #!/bin/bash
 
-# Ambil status baterai
+id=10
 battery_info=$(acpi -b)
 percent=$(echo "$battery_info" | grep -oP '\d+(?=%)')
 status=$(echo "$battery_info" | awk '{print $3}' | tr -d ',')
-
-# Kirim notifikasi jika baterai rendah
 if [[ "$status" == "Discharging" && "$percent" -lt 20 ]]; then
-    dunstify -u critical -t 5000 -h string:x-dunst-stack-tag:battery "Baterai Lemah" "Sisa baterai: ${percent}%"
+    dunstify -u critical -r $id "Baterai Lemah" "Sisa baterai: ${percent}%"
+elif [[ "$status" == "Charging" ]];then
+    dunstify -C $id
 fi
 ```
 
