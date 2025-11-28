@@ -173,7 +173,7 @@ bindsym $mod+r mode "resize"
 
 # === custom ===
 # Workspace
-workspace "9" output HDMI-1
+workspace $ws9 output HDMI-1
 
 # startup
 exec_always --no-startup-id xrandr --output eDP-1 --scale 0.8x0.8
@@ -182,10 +182,10 @@ exec_always --no-startup-id xset -dpms
 exec_always --no-startup-id xset s off
 exec_always --no-startup-id xset s noblank
 exec_always --no-startup-id pkill dunst; dunst &
-exec_always --no-startup-id picom --config ~/.config/picom/picom.conf -b
+exec_always --no-startup-id picom -b
 
 # keybinding
-bindsym $mod+d exec rofi -show drun
+bindsym $mod+d exec rofi -show drun -display-drun "Apps" -show-icons -font "mono 14"
 bindsym $mod+c exec ~/.config/i3/scripts/script.sh clipboard
 bindsym Mod1+Shift+Control+q exec ~/.config/i3/scripts/script.sh logout
 bindsym Print exec scrot ~/Pictures/%Y-%m-%d-%T.png
@@ -207,7 +207,7 @@ bindsym XF86AudioMicMute exec wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle && pk
 
 # i3 custom
 # Border
-for_window [class="."] border pixel 4
+for_window [class="."] border pixel 5
 gaps inner 10
 smart_gaps on
 hide_edge_borders smart
@@ -219,8 +219,13 @@ bar {
         # status_command i3status
         # status_command i3blocks
         status_command ~/.config/i3/scripts/i3bar_custom.sh
-        # separator_symbol " "
+        i3bar_command i3bar --transparency
+        separator_symbol " | "
         padding 0 12px
 	position buttom
+        colors {
+                background #00000060
+                separator #FFFFFF
+        }
 
 }

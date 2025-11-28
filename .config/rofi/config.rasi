@@ -1,0 +1,14 @@
+@theme "/usr/share/rofi/themes/DarkBlue.rasi"
+listview {
+    spacing:    5px;
+    lines:      5;
+}
+element {
+   spacing: 14px;
+}
+element-text {
+    vertical-align: 0.5;
+}
+element-icon {
+    size: 32px;
+}
