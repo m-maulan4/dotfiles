@@ -220,12 +220,12 @@ bar {
         # status_command i3blocks
         status_command ~/.config/i3/scripts/i3bar_custom.sh
         i3bar_command i3bar --transparency
-        separator_symbol " | "
-        padding 0 12px
+        separator_symbol "|"
+        padding 0 14px
 	position buttom
         colors {
                 background #00000060
-                separator #FFFFFF
+                separator #FFFFFF30
         }
 
 }
