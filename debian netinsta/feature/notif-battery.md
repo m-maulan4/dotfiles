@@ -1,4 +1,5 @@
 # Battery Low Notification Script
+
 skrip baterai ini **jalan otomatis di systemd user session** setiap beberapa menit, tanpa perlu cron.
 
 ---
@@ -51,9 +52,10 @@ EnvironmentFile=%h/.config/systemd/user/battery-env.conf
 ExecStart=%h/.local/bin/battery-alert.sh
 ```
 
-* `Type=oneshot` karena skrip cuma jalan sekali tiap pemanggilan.
+- `Type=oneshot` karena skrip cuma jalan sekali tiap pemanggilan.
 
 ---
+
 ## 3️. Buat file environment otomatis
 
 File: `~/.config/systemd/user/battery-env.conf`
@@ -74,10 +76,12 @@ path (jika tidak ada buat dulu filenya):
 echo "DISPLAY=$DISPLAY" > ~/.config/systemd/user/battery-env.conf
 echo "DBUS_SESSION_BUS_ADDRESS=$DBUS_SESSION_BUS_ADDRESS" >> ~/.config/systemd/user/battery-env.conf
 ```
+
 > Pastikan dalam file `.xinitrc` ada baris perintah `exec i3` supaya bisa login lewat startx di terminal tty.
 
-* Jadi setiap login X session, `battery-env.conf` diperbarui otomatis.
-* Service systemd membaca environment ini, jadi tidak perlu hardcode.
+- Jadi setiap login X session, `battery-env.conf` diperbarui otomatis.
+- Service systemd membaca environment ini, jadi tidak perlu hardcode.
+
 ---
 
 ## 4. Buat systemd timer
@@ -90,16 +94,17 @@ Description=Timer untuk notifikasi baterai lemah
 
 [Timer]
 OnBootSec=2min
-OnUnitActiveSec=1min
+OnUnitActiveSec=30s
 Persistent=true
+Unit=battery-alert.service
 
 [Install]
-WantedBy=default.target
+WantedBy=timers.target
 ```
 
-* `OnBootSec=2min` → jalankan 2 menit setelah login.
-* `OnUnitActiveSec=1min` → jalankan ulang setiap 1 menit.
-* `Persistent=true` → kalau komputer mati/hibernasi, jalankan segera saat kembali.
+- `OnBootSec=2min` → jalankan 2 menit setelah login.
+- `OnUnitActiveSec=1min` → jalankan ulang setiap 1 menit.
+- `Persistent=true` → kalau komputer mati/hibernasi, jalankan segera saat kembali.
 
 ---
 
@@ -112,8 +117,8 @@ systemctl --user daemon-reload
 systemctl --user enable --now battery-alert.timer
 ```
 
-* `enable` → supaya otomatis jalan tiap login.
-* `--now` → langsung mulai timer sekarang juga.
+- `enable` → supaya otomatis jalan tiap login.
+- `--now` → langsung mulai timer sekarang juga.
 
 ---
 
@@ -121,6 +126,6 @@ systemctl --user enable --now battery-alert.timer
 
 Tambahakan perintah `exec_always --no-startup-id pkill dunst; dunst &` di file `~/.config/i3/config` supaya notify-send berlajan.
 
-----
+---
 
 ✅ Sekarang, skrip akan **otomatis mengecek baterai setiap 1 menit** dan menampilkan notifikasi jika kurang dari 20%.
