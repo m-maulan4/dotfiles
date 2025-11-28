@@ -7,7 +7,7 @@ title(){
 
 }
 wifi(){
-    WiFi=$(nmcli -t -f NAME connection show --active | grep -v lo)
+    WiFi=$(nmcli -t -f active,ssid dev wifi | grep '^yes' | cut -d: -f2)
      if [ -z "$WiFi" ]; then
         WiFi="DOWN"
         Color="#FF0000"
@@ -17,7 +17,7 @@ wifi(){
     echo "{\"color\":\"$Color\",\"full_text\":\" $WiFi\"},"
 }
 bt(){
-    device=$(bluetoothctl devices Connected | cut -d' ' -f4-); [ -z "$device" ] 
+    device=$(bluetoothctl devices Connected | cut -d' ' -f4-); 
     if [ -n "$device" ]; then
 	echo "{\"color\":\"#00FF00\",\"full_text\":\" $device\"},"
     fi
