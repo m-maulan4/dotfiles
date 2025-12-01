@@ -54,27 +54,6 @@ switch-workspaces(){
         i3-msg workspace "$selected"
     fi
 }
-clipboard(){
-    CLIPFILE="$HOME/.cache/clipboard_history.txt"
-    save_clipboard() {
-        local current
-        current=$(xclip -o -selection clipboard 2>/dev/null)
-        if [[ -n "$current" ]]; then
-            grep -Fxv "$current" "$CLIPFILE" 2>/dev/null > "$CLIPFILE.tmp" 2>/dev/null || true
-            echo "$current" >> "$CLIPFILE.tmp"
-            mv "$CLIPFILE.tmp" "$CLIPFILE"
-        fi
-    }
-    select_from_history() {
-        local selected
-        selected=$(tac "$CLIPFILE" | rofi -dmenu -i -p "Clipboard")
-        if [[ -n "$selected" ]]; then
-            echo -n "$selected" | xclip -selection clipboard
-        fi
-    }
-    save_clipboard
-    select_from_history
-}
 
 # printah terminal
 case "$1" in
@@ -89,9 +68,6 @@ case "$1" in
         ;;
     switch-workspaces)
         switch-workspaces
-        ;;
-    clipboard)
-        clipboard
         ;;
     *)
         exit 0

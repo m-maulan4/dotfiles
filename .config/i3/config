@@ -183,10 +183,11 @@ exec_always --no-startup-id xset s off
 exec_always --no-startup-id xset s noblank
 exec_always --no-startup-id pkill dunst; dunst &
 exec_always --no-startup-id picom -b
+exec_always --no-startup-id xfce4-clipman
 
 # keybinding
 bindsym $mod+d exec rofi -show drun -display-drun "Apps" -show-icons -font "mono 14"
-bindsym $mod+c exec ~/.config/i3/scripts/script.sh clipboard
+bindsym $mod+c exec xfce4-popup-clipman
 bindsym Mod1+Shift+Control+q exec ~/.config/i3/scripts/script.sh logout
 bindsym Print exec scrot ~/Pictures/%Y-%m-%d-%T.png
 bindsym Shift+Print exec scrot -s ~/Pictures/l-%Y-%m-%d-%T.png
@@ -223,6 +224,7 @@ bar {
         separator_symbol "|"
         padding 0 14px
 	position buttom
+        tray_output none
         colors {
                 background #00000060
                 separator #FFFFFF30
