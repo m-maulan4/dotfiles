@@ -141,8 +141,6 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -188,7 +186,7 @@ exec_always --no-startup-id xfce4-clipman
 # keybinding
 bindsym $mod+d exec rofi -show drun -display-drun "Apps" -show-icons -font "mono 14"
 bindsym $mod+c exec xfce4-popup-clipman
-bindsym Mod1+Shift+Control+q exec ~/.config/i3/scripts/script.sh logout
+bindsym $mod+Shift+e exec ~/.config/i3/scripts/script.sh logout
 bindsym Print exec scrot ~/Pictures/%Y-%m-%d-%T.png
 bindsym Shift+Print exec scrot -s ~/Pictures/l-%Y-%m-%d-%T.png
 bindsym $mod+Tab exec ~/.config/i3/scripts/script.sh switch-workspaces
