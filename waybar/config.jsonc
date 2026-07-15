@@ -54,7 +54,8 @@
     "network": {
         "format-wifi": " {essid}",
         "format-ethernet": " connected",
-        "format-disconnected": "󰖪 offline"
+        "format-disconnected": "󰖪 offline",
+        "on-click": "foot --title=nmtui -e nmtui"
     },
     "pulseaudio": {
         "format": " {volume}%",

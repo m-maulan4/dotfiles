@@ -51,7 +51,8 @@ smart_borders on
 # =====================
 
 for_window [app_id="pavucontrol"] floating enable
-#for_window [app_id="firefox" title="Picture-in-Picture"] sticky enable
+for_window [app_id="firefox" title="Picture-in-Picture"] sticky enable
+for_window [app_id="foot" title="nmtui"] floating enable
 
 # =====================
 # Idle
@@ -82,9 +83,7 @@ input type:touchpad {
 # =====================
 
 # exec_always --no-startup-id swaybg -i ~/.config/sway/wallpaper.jpg -m fill
-
-exec --no-startup-id waybar
-
+exec_always --no-startup-id "killall waybar; waybar"
 exec --no-startup-id mako
 
 # =====================

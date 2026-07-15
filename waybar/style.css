@@ -17,12 +17,13 @@ window#waybar {
     background: #313244;
 }
 
-#clock,
+#pulseaudio,
+#network,
 #cpu,
+#temperature,
 #memory,
 #battery,
-#network,
-#pulseaudio,
+#clock,
 #custom-power,
 #tray {
     padding: 0 8;
