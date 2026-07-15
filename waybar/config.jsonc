@@ -3,10 +3,7 @@
     "position": "top",
     "height": 32,
     "modules-left": [
-        "sway/workspaces"
-        // "sway/mode"
-    ],
-    "modules-center": [
+        "sway/workspaces",
         "sway/window"
     ],
     "modules-right": [
@@ -17,7 +14,6 @@
         "memory",
         "battery",
         "clock",
-        "custom/reboot",
         "custom/power",
         "tray"
     ],
@@ -70,15 +66,17 @@
         "format-muted": " muted",
         "on-click": "pavucontrol"
     },
-    "custom/reboot": {
-        "format": "", // Kamu bisa ganti dengan ikon ikonik favoritmu
-        "tooltip": false,
-        "on-click": "systemctl reboot"
-    },
     "custom/power": {
-        "format": "",
+        "format": "⏻",
         "tooltip": false,
-        "on-click": "systemctl poweroff"
+        "menu": "on-click",
+        "menu-file": "~/.config/waybar/power_menu.xml",
+        "menu-actions": {
+            "shutdown": "systemctl poweroff",
+            "reboot": "systemctl reboot",
+            "suspend": "systemctl suspend",
+            "logout": "swaymsg exit"
+        }
     },
     "tray": {
         "spacing": 10
