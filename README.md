@@ -1,4 +1,4 @@
-# Setup Sway 
+# Setup Sway
 
 ## Install Sway dan Package yang di perlukan
 
@@ -11,8 +11,10 @@ pipewire-alsa alsa-utils pavucontrol\
 greetd tuigreet
 ```
 ## Config
+
 ### Sway, waybar, fuzzel
 Salin folder **sway**, **waybar**, dan **fuzzel** ke folder `~/.config`
+
 ### greetd + TUI greeter
 `sudo systemctl enable greetd`
 `sudo nano /etc/greetd/config.toml`
