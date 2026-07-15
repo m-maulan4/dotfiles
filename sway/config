@@ -43,6 +43,7 @@ gaps inner 10
 gaps outer -10
 
 default_border none
+default_floating_border pixel 1
 
 # =====================
 # Window rules
