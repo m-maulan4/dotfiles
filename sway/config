@@ -1,0 +1,225 @@
+# =====================
+# Variables
+# =====================
+set $mod Mod4
+set $left h
+set $down j
+set $up k
+set $right l
+set $term foot
+set $menu fuzzel
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+# =====================
+# Output / Display
+# =====================
+
+# Contoh resolusi (ubah sesuai monitor)
+# output HDMI-A-1 resolution 1920x1080 position 0,0
+
+# Wallpaper
+# output * bg ~/.config/sway/wallpaper.jpg fill
+
+output eDP-1 {
+    scale 1.3
+}
+
+# =====================
+# Appearance
+# =====================
+
+# font pango:JetBrains Mono 10
+
+gaps inner 10
+gaps outer -10
+
+default_border none
+
+# =====================
+# Window rules
+# =====================
+
+for_window [app_id="pavucontrol"] floating enable
+#for_window [app_id="firefox" title="Picture-in-Picture"] sticky enable
+
+# =====================
+# Idle
+# =====================
+
+# exec swayidle -w \
+#   timeout 300 'swaylock -f -c 000000' \
+#   timeout 600 'swaymsg "output * power off"' \
+#   resume 'swaymsg "output * power on"'
+
+# =====================
+# Input
+# =====================
+
+input type:keyboard {
+    xkb_layout us
+    repeat_delay 500
+}
+
+# Touchpad
+input type:touchpad {
+    tap enabled
+    natural_scroll enabled
+}
+
+# =====================
+# Autostart
+# =====================
+
+# exec_always --no-startup-id swaybg -i ~/.config/sway/wallpaper.jpg -m fill
+
+exec --no-startup-id waybar
+
+exec --no-startup-id mako
+
+# =====================
+# Keybindings
+# =====================
+
+# Terminal
+bindsym $mod+Return exec $term
+
+# Launcher
+bindsym $mod+d exec $menu
+
+# Close window
+bindsym $mod+q kill
+
+# Reload config
+bindsym $mod+Shift+c reload
+
+# Restart sway
+bindsym $mod+Shift+r restart
+
+# Exit sway
+bindsym $mod+Shift+e exec swaynag \
+    -t warning \
+    -m "Keluar dari Sway?" \
+    -B "Keluar" "swaymsg exit"
+
+# =====================
+# Window movement
+# =====================
+
+# Focus
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# Move window
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# =====================
+# Workspaces
+# =====================
+
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+
+# =====================
+# Layout
+# =====================
+
+bindsym $mod+b splith
+bindsym $mod+v splitv
+
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+bindsym $mod+f fullscreen
+
+bindsym $mod+Shift+space floating toggle
+
+#
+# Scratchpad:
+#
+    # Sway has a "scratchpad", which is a bag of holding for windows.
+    # You can send windows there and get them back later.
+
+    # Move the currently focused window to the scratchpad
+    bindsym $mod+Shift+minus move scratchpad
+
+    # Show the next scratchpad window or hide the focused scratchpad window.
+    # If there are multiple scratchpad windows, this command cycles through them.
+    bindsym $mod+minus scratchpad show
+
+# =====================
+# Resizing containers:
+# =====================
+
+bindsym $mod+r mode "resize"
+mode "resize" {
+
+    bindsym Left resize shrink width 10px
+    bindsym Down resize grow height 10px
+    bindsym Up resize shrink height 10px
+    bindsym Right resize grow width 10px
+
+    # Return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+# =====================
+# Media keys
+# =====================
+
+bindsym XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ --limit 1.0
+bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+bindsym XF86AudioMicMute exec wpctl set-source-mute @DEFAULT_SOURCE@ toggle
+
+bindsym XF86MonBrightnessUp exec brightnessctl set 10%+
+bindsym XF86MonBrightnessDown exec brightnessctl set 10%-
+
+# =====================
+# Screenshot
+# =====================
+
+bindsym Print exec grim -g "$(slurp)" ~/Pictures/screenshot.png
+
+# =====================
+# Environment
+# =====================
+
+set $XDG_CURRENT_DESKTOP sway
+set $XDG_SESSION_TYPE wayland
+xwayland enable
+
