@@ -1,0 +1,86 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 32,
+    "modules-left": [
+        "sway/workspaces"
+        // "sway/mode"
+    ],
+    "modules-center": [
+        "sway/window"
+    ],
+    "modules-right": [
+        "pulseaudio",
+        "network",
+        "cpu",
+        "temperature",
+        "memory",
+        "battery",
+        "clock",
+        "custom/reboot",
+        "custom/power",
+        "tray"
+    ],
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "format": "{icon}",
+        "format-icons": {
+            "focused": "",
+            "default": "",
+            "urgent": ""
+        }
+    },
+    "sway/mode": {
+        "format": " {}"
+    },
+    "sway/window": {
+        "format": "{}"
+    },
+    "clock": {
+        "format": " {:%d/%m/%Y %H:%M}",
+        "tooltip-format": "{:%A, %d %B %Y}"
+    },
+    "cpu": {
+        "format": " {usage}%"
+    },
+    "memory": {
+        "format": " {}%"
+    },
+    "temperature": {
+        "format": " {temperatureC}°C"
+    },
+    "battery": {
+        "format": "{icon} {capacity}%",
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    "network": {
+        "format-wifi": " {essid}",
+        "format-ethernet": " connected",
+        "format-disconnected": "󰖪 offline"
+    },
+    "pulseaudio": {
+        "format": " {volume}%",
+        "format-muted": " muted",
+        "on-click": "pavucontrol"
+    },
+    "custom/reboot": {
+        "format": "", // Kamu bisa ganti dengan ikon ikonik favoritmu
+        "tooltip": false,
+        "on-click": "systemctl reboot"
+    },
+    "custom/power": {
+        "format": "",
+        "tooltip": false,
+        "on-click": "systemctl poweroff"
+    },
+    "tray": {
+        "spacing": 10
+    }
+}

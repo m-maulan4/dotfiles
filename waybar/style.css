@@ -1,0 +1,49 @@
+* {
+    font-size: 14px;
+}
+
+window#waybar {
+    background: rgba(0, 0, 0, 0.202);
+    color: #ffffff;
+    border-radius: 0;
+}
+
+#workspaces button {
+    padding: 0 8px;
+    color: #888888;
+}
+
+#workspaces button.focused {
+    color: #89b4fa;
+    background: #313244;
+}
+
+#clock,
+#cpu,
+#memory,
+#battery,
+#network,
+#pulseaudio,
+#tray {
+    padding: 0 10px;
+}
+
+#window {
+    color: #cdd6f4;
+}
+#custom-reboot {
+    color: #f9e2af; /* Warna kuning pastel */
+    padding: 0 8px;
+}
+#custom-reboot:hover {
+    background-color: #f9e2af;
+    color: #11111b;
+}
+#custom-power {
+    color: #f38ba8; /* Warna merah pastel */
+    padding: 0 8px;
+}
+#custom-power:hover {
+    background-color: #f38ba8;
+    color: #11111b;
+}
