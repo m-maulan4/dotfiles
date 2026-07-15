@@ -44,6 +44,7 @@ gaps outer -10
 
 default_border none
 default_floating_border pixel 1
+smart_borders on
 
 # =====================
 # Window rules
