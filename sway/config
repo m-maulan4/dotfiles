@@ -42,9 +42,11 @@ output eDP-1 {
 gaps inner 10
 gaps outer -10
 
-default_border none
+default_border pixel 1
 default_floating_border pixel 1
 smart_borders on
+
+focus_follows_mouse no
 
 # =====================
 # Window rules
