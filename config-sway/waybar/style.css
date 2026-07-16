@@ -14,10 +14,12 @@ window#waybar {
 
 /* Workspaces */
 #workspaces button {
-    padding: 0 10px;
     color: #6272a4;
     background: transparent;
-    border-radius: 8px;
+    padding: 0 8px;
+    margin: 4px 0;
+
+    border-radius: 4px;
 }
 
 
@@ -63,9 +65,8 @@ window#waybar {
     padding: 4px 10px;
     margin: 4px 3px;
 
-    border-radius: 8px;
+    border-radius: 4px;
 }
-
 
 /* Individual colors */
 
