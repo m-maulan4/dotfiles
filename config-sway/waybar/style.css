@@ -6,33 +6,22 @@
 
 /* Main bar */
 window#waybar {
-    background: rgba(0, 0, 0, 0.3);
+    background: transparent;
     color: #f8f8f2;
-    /* border-bottom: 0.5px solid #bd93f9; */
 }
 
 
 /* Workspaces */
 #workspaces button {
-    color: #6272a4;
-    background: transparent;
-
-    padding: 0 8px;
-    margin: 4px 0;
-
-    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    margin-right: 4px;
+    padding: 0px 4px;
 }
-
-
-#workspaces button:hover {
-    background: #44475a;
-    color: #f8f8f2;
-}
-
 
 #workspaces button.focused {
-    background: #bd93f9;
-    color: #282a36;
+    background: rgba(255, 255, 255, 0.3);
+    color: #ffffff;
 }
 
 
@@ -43,13 +32,17 @@ window#waybar {
 
 
 /* Window title */
-#window.active {
-    background: #44475a;
+#window {
+    background: rgba(255, 255, 255, 0.1);
     color: #f8f8f2;
-    padding: 4px 10px;
-    margin: 4px 32px 3px;
-
-    border-radius: 4px;
+    margin-left: 1rem;
+    padding: 0px 10px;
+    border-radius: 6px;
+}
+window#waybar.empty #window {
+    background-color: transparent;
+    padding: 0;
+    margin: 0;
 }
 
 
@@ -64,14 +57,11 @@ window#waybar {
 #custom-power,
 #backlight,
 #tray {
-
-    background: #44475a;
+    background: rgba(255, 255, 255, 0.1);
     color: #f8f8f2;
-
-    padding: 4px 10px;
-    margin: 4px 3px;
-
-    border-radius: 4px;
+    margin-right: 6px;
+    padding: 0px 8px;
+    border-radius: 6px;
 }
 
 
@@ -166,6 +156,6 @@ window#waybar {
 #clock:hover,
 #tray:hover {
 
-    background: #6272a4;
+    background: rgba(255, 255, 255, 0.3);
     color: #f8f8f2;
 }

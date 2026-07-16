@@ -1,7 +1,7 @@
 {
     "layer": "top",
     "position": "top",
-    "height": 32,
+    // "height": 32,
     "exclusive": true,
     "modules-left": [
         "sway/workspaces",
@@ -55,7 +55,7 @@
     },
     "network": {
         "format-wifi": " {essid}",
-        "format-ethernet": "  Lan",
+        "format-ethernet": " Lan",
         "format-disconnected": "󰖪 offline"
     },
     "pulseaudio": {

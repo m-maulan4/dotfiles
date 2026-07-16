@@ -13,7 +13,8 @@ sudo apt upgrade
 
 ```bash
 sudo apt install sudo git htop unzip zip \
-network-manager pipewire-audio tlp tlp-rdw
+network-manager pipewire-audio tlp tlp-rdw\
+libnotify-bin
 ```
 
 Kegunaan:
@@ -25,6 +26,7 @@ Kegunaan:
 * `pipewire-audio` → paket komponen audio PipeWire
 * `tlp` → layanan utama penghemat daya.
 * `tlp-rdw` → integrasi untuk perangkat radio (Wi-Fi, Bluetooth, dll.).
+* `libnotify-bin` → notifikasi desktop
 
 ### 3. konfigurasi
 
