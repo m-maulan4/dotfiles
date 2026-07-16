@@ -16,6 +16,7 @@ window#waybar {
 #workspaces button {
     color: #6272a4;
     background: transparent;
+
     padding: 0 8px;
     margin: 4px 0;
 
@@ -57,6 +58,7 @@ window#waybar {
 #battery,
 #clock,
 #custom-power,
+#backlight,
 #tray {
 
     background: #44475a;
@@ -68,7 +70,8 @@ window#waybar {
     border-radius: 4px;
 }
 
-/* Individual colors */
+
+/* Dracula module colors */
 
 #clock {
     color: #8be9fd;
@@ -86,6 +89,11 @@ window#waybar {
 
 
 #temperature {
+    color: #ffb86c;
+}
+
+
+#backlight {
     color: #ffb86c;
 }
 
@@ -150,8 +158,176 @@ window#waybar {
 #temperature:hover,
 #memory:hover,
 #battery:hover,
+#backlight:hover,
 #clock:hover,
 #tray:hover {
+
+    background: #6272a4;
+    color: #f8f8f2;
+}* {
+    font-family: "monospace";
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* Main bar */
+window#waybar {
+    background: rgba(40, 42, 54, 0.92);
+    color: #f8f8f2;
+    border-bottom: 0.5px solid #bd93f9;
+}
+
+
+/* Workspaces */
+#workspaces button {
+    color: #6272a4;
+    background: transparent;
+
+    padding: 0 8px;
+    margin: 4px 0;
+
+    border-radius: 4px;
+}
+
+
+#workspaces button:hover {
+    background: #44475a;
+    color: #f8f8f2;
+}
+
+
+#workspaces button.focused {
+    background: #bd93f9;
+    color: #282a36;
+}
+
+
+#workspaces button.urgent {
+    background: #ff5555;
+    color: #f8f8f2;
+}
+
+
+/* Window title */
+#window {
+    margin-left: 10px;
+    color: #f8f8f2;
+}
+
+
+/* Semua modul kanan */
+#pulseaudio,
+#network,
+#cpu,
+#temperature,
+#memory,
+#battery,
+#clock,
+#custom-power,
+#backlight,
+#tray {
+
+    background: #44475a;
+    color: #f8f8f2;
+
+    padding: 4px 10px;
+    margin: 4px 3px;
+
+    border-radius: 4px;
+}
+
+
+/* Dracula module colors */
+
+#clock {
+    color: #8be9fd;
+}
+
+
+#cpu {
+    color: #50fa7b;
+}
+
+
+#memory {
+    color: #bd93f9;
+}
+
+
+#temperature {
+    color: #ffb86c;
+}
+
+
+#backlight {
+    color: #ffb86c;
+}
+
+
+#battery {
+    color: #f1fa8c;
+}
+
+
+#battery.charging {
+    color: #50fa7b;
+}
+
+
+#battery.warning {
+    color: #ffb86c;
+}
+
+
+#battery.critical {
+    color: #ff5555;
+}
+
+
+#network {
+    color: #8be9fd;
+}
+
+
+#pulseaudio {
+    color: #ff79c6;
+}
+
+
+#pulseaudio.muted {
+    color: #6272a4;
+}
+
+
+/* Power button */
+#custom-power {
+    color: #ff79c6;
+}
+
+
+#custom-power:hover {
+    background: #ff79c6;
+    color: #282a36;
+}
+
+
+/* Tray */
+#tray {
+    color: #f8f8f2;
+}
+
+
+/* Hover effect */
+#pulseaudio:hover,
+#network:hover,
+#cpu:hover,
+#temperature:hover,
+#memory:hover,
+#battery:hover,
+#backlight:hover,
+#clock:hover,
+#tray:hover {
+
     background: #6272a4;
     color: #f8f8f2;
 }

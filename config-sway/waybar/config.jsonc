@@ -9,6 +9,7 @@
     ],
     "modules-right": [
         "pulseaudio",
+        "backlight",
         "network",
         "cpu",
         "temperature",
@@ -54,7 +55,7 @@
     },
     "network": {
         "format-wifi": " {essid}",
-        "format-ethernet": " connected",
+        "format-ethernet": "  Lan",
         "format-disconnected": "󰖪 offline"
     },
     "pulseaudio": {
@@ -73,6 +74,11 @@
             "suspend": "systemctl suspend",
             "logout": "swaymsg exit"
         }
+    },
+    "backlight": {
+        "format": "{percent}% ",
+        "on-scroll-up": "brightnessctl set +5%",
+        "on-scroll-down": "brightnessctl set 5%-"
     },
     "tray": {
         "spacing": 10
