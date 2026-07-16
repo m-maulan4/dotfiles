@@ -5,7 +5,7 @@
 ### 1. Paket dasar
 
 ```bash
-sudo apt install sway wayabr mako-notifier grim slurp nwg_look \
+sudo apt install sway waybar mako-notifier grim slurp nwg_look \
 brightnessctl xdg-desktop-portal-wlr fonts-jetbrains-mono \
 pavucontrol greetd tuigreet
 ```
@@ -46,18 +46,19 @@ sudo fc-cache -f -v
 Salin folder **sway**, **waybar**, dan **fuzzel** ke folder `~/.config`
 
 #### Konfigurasi Greetd dan TUIGreet
-Edit file `sudo nano etc/greetd/config.toml` dan masukan atau ubah seperti ini :
+1. Edit file `sudo nano etc/greetd/config.toml` dan masukan atau ubah seperti ini :
 
 ```bash
 [terminal]
-vt = 7
+vt = 1
 
 [default_session]
-command = "tuigreet \
---time \
---remember \
---asterisks \
---theme 'border=magenta;text=white;prompt=cyan;>
---cmd sway"
+command = "tuigreet --time --remember --asterisks --theme 'container=black;border=magenta;title=lightmagenta;text=white;greet=lightmagenta;prompt=magenta;input=white;time=cyan;action=lightblue;button=yellow' --cmd sway"
 user = "_greetd"
+```
+2. Disable agetty@1
+```bash
+sudo systemctl stop getty@tty1.service
+sudo systemctl disable getty@tty1.service
+sudo systemctl mask getty@tty1.service
 ```
