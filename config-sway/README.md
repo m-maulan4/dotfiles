@@ -8,7 +8,7 @@ xdg-desktop-portal-wlr grim mako-notifier \
 slurp wl-clipboard thunar \
 pipewire pipewire-pulse wireplumber \
 pipewire-alsa alsa-utils pavucontrol\
-nwg_look
+nwg_look 
 ```
 ## Config
 
