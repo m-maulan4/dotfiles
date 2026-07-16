@@ -37,7 +37,7 @@ output eDP-1 {
 # Appearance
 # =====================
 
-# font pango:JetBrains Mono 10
+# font monospace 10
 
 gaps inner 10
 gaps outer -10

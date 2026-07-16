@@ -60,5 +60,5 @@ user = "_greetd"
 ```bash
 sudo systemctl stop getty@tty1.service
 sudo systemctl disable getty@tty1.service
-sudo systemctl mask getty@tty1.service
+sudo systemctl mask getty@tty1.service (opsional)
 ```
