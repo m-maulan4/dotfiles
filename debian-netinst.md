@@ -13,7 +13,7 @@ sudo apt upgrade
 
 ```bash
 sudo apt install sudo git htop unzip zip \
-network-manager pipewire-audio pavucontrol
+network-manager pipewire-audio
 ```
 
 Kegunaan:
@@ -23,7 +23,6 @@ Kegunaan:
 * `htop` → melihat proses
 * `network-manager` → untuk koneksi jaringan
 * `pipewire-audio` → paket komponen audio PipeWire
-* `pavucontrol` → mengontrol audio pipewire
 
 ### 3. konfigurasi
 
