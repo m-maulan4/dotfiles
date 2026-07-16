@@ -27,10 +27,10 @@ Kegunaan:
 ### 3. konfigurasi
 
 #### Sudo
-
+Masuk sebagai root: `su -`
 Perintahnya `usermod -aG sudo username` 
 
-ganti username sesuai user untuk login (bukan root), lalu login ulang
+Ganti username sesuai user untuk login (bukan root), lalu login ulang
 
 #### NetworkManager
 

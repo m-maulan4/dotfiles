@@ -5,9 +5,9 @@
 ### 1. Paket dasar
 
 ```bash
-sudo apt install sway waybar mako-notifier grim slurp nwg_look \
+sudo apt install sway waybar mako-notifier grim slurp nwg-look \
 brightnessctl xdg-desktop-portal-wlr fonts-jetbrains-mono \
-pavucontrol greetd tuigreet
+pavucontrol thunar fuzzel greetd tuigreet
 ```
 
 Kegunaan:
@@ -20,10 +20,12 @@ Kegunaan:
 * `wl-clipboard` Clipboard Wayland
 * `brightnessctl` Kontrol brightness
 * `pavucontrol` → Mengontrol audio pipewire
-* `nwg_look` → Aplikasi untuk pengaturan antarmuka 
+* `nwg-look` → Aplikasi untuk pengaturan antarmuka 
 * `xdg-desktop-portal-wlr` → Menangani fitur khusus Wayland/wlroots seperti screen sharing, screencast, dan screenshot melalui portal
 * `fonts-jetbrains-mono` → font
-* ` greetd` → Daemon login minimal
+* `thunar` → File Manager
+* `greetd` → Daemon login minimal
+* `fuzzel` → Menu
 * `tuigreet` → Antarmuka login TUI 
 
 ### 2. konfigurasi

@@ -61,7 +61,9 @@
     "pulseaudio": {
         "format": " {volume}%",
         "format-muted": " muted",
-        "on-click": "pavucontrol"
+        "on-click": "pavucontrol",
+        "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ --limit 1.0",
+        "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
     },
     "custom/power": {
         "format": "⏻",

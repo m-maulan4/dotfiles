@@ -46,6 +46,9 @@ default_border pixel 1
 default_floating_border pixel 1
 smart_borders on
 
+client.focused          #BD93F9   #BD93F9    #F8F8F2  #BD93F9   #BD93F9
+client.unfocused        #282A36   #282A36    #6272A4  #282A36   #282A36
+
 focus_follows_mouse no
 
 # =====================
@@ -85,7 +88,7 @@ input type:touchpad {
 # =====================
 
 # exec_always --no-startup-id swaybg -i ~/.config/sway/wallpaper.jpg -m fill
-exec_always --no-startup-id "killall waybar; waybar"
+exec_always --no-startup-id "pkill waybar; waybar"
 exec --no-startup-id mako
 
 # =====================
@@ -202,7 +205,8 @@ bindsym XF86MonBrightnessDown exec brightnessctl set 10%-
 # Screenshot
 # =====================
 
-bindsym Print exec grim -g "$(slurp)" ~/Pictures/screenshot.png
+bindsym Shift+Print exec grim -g "$(slurp)" "$HOME/Pictures/$(date +'%Y-%m-%d_%H-%M-%S').png"
+bindsym Print exec grim "$HOME/Pictures/$(date +'%Y-%m-%d_%H-%M-%S').png"
 
 # =====================
 # Environment
