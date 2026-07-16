@@ -5,8 +5,9 @@
 ### 1. Paket dasar
 
 ```bash
-sudo apt install sway wayabr mako-notifier grim nwg_look \
-xdg-desktop-portal-wlr fonts-jetbrains-mono
+sudo apt install sway wayabr mako-notifier grim slurp nwg_look \
+brightnessctl xdg-desktop-portal-wlr fonts-jetbrains-mono \
+pavucontrol
 ```
 
 Kegunaan:
