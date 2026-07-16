@@ -51,3 +51,16 @@ Ubah config dengan mengubah :
 auto lo
 iface lo inet loopback
 ```
+3. Git
+
+Perintah :
+
+```bash
+git config --global user.name "Nama Kamu"
+git config --global user.email "emailkamu@example.com"
+git config --global init.defaultBranch main
+```
+* Masukan sesuai nama kamu
+* Masukan sesuai email kamu
+* Untuk branch biarkan `main`
+
