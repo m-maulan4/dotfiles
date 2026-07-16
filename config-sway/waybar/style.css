@@ -8,7 +8,7 @@
 window#waybar {
     background: rgba(0, 0, 0, 0.3);
     color: #f8f8f2;
-    border-bottom: 0.5px solid #bd93f9;
+    /* border-bottom: 0.5px solid #bd93f9; */
 }
 
 
@@ -43,9 +43,13 @@ window#waybar {
 
 
 /* Window title */
-#window {
-    margin-left: 10px;
+#window.active {
+    background: #44475a;
     color: #f8f8f2;
+    padding: 4px 10px;
+    margin: 4px 32px 3px;
+
+    border-radius: 4px;
 }
 
 
