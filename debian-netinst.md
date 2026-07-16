@@ -13,7 +13,7 @@ sudo apt upgrade
 
 ```bash
 sudo apt install sudo git htop unzip zip \
-network-manager pipewire-audio
+network-manager pipewire-audio tlp tlp-rdw
 ```
 
 Kegunaan:
@@ -23,6 +23,8 @@ Kegunaan:
 * `htop` → melihat proses
 * `network-manager` → untuk koneksi jaringan
 * `pipewire-audio` → paket komponen audio PipeWire
+* `tlp` → layanan utama penghemat daya.
+* `tlp-rdw` → integrasi untuk perangkat radio (Wi-Fi, Bluetooth, dll.).
 
 ### 3. konfigurasi
 
