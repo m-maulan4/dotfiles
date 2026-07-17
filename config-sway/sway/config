@@ -39,15 +39,14 @@ output eDP-1 {
 
 # font monospace 10
 
-gaps inner 10
-gaps outer -10
+gaps inner 5
+gaps outer -5
 
 default_border pixel 1
 default_floating_border pixel 1
 smart_borders on
 
-client.focused          #BD93F9   #BD93F9    #F8F8F2  #BD93F9   #BD93F9
-client.unfocused        #282A36   #282A36    #6272A4  #282A36   #282A36
+client.focused #ffffff #ffffff #000000 #ffffff #ffffff
 
 focus_follows_mouse no
 
@@ -87,7 +86,7 @@ input type:touchpad {
 # Autostart
 # =====================
 
-# exec_always --no-startup-id swaybg -i ~/.config/sway/wallpaper.jpg -m fill
+exec_always --no-startup-id swaybg -i ~/.config/sway/bg.jpg -m fill
 exec_always --no-startup-id "pkill waybar; waybar"
 exec --no-startup-id mako
 

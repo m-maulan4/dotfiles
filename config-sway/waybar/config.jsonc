@@ -6,7 +6,7 @@
   "margin-left": 20,
   "margin-right": 20,
   "exclusive": true,
-  "modules-left": ["sway/workspaces", "sway/window"],
+  "modules-left": ["sway/mode","sway/workspaces", "sway/window"],
   "modules-center": ["clock"],
   "modules-right": [
     "pulseaudio",
@@ -21,10 +21,10 @@
   "sway/workspaces": {
     "disable-scroll": true,
     "all-outputs": true,
-    "format": "{icon}"
+    "format": "{}"
   },
   "sway/mode": {
-    "format": " {}"
+    "format": "{}"
   },
   "sway/window": {
     "format": "{app_id}"
