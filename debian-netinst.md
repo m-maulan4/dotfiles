@@ -14,7 +14,7 @@ sudo apt upgrade
 ```bash
 sudo apt install sudo git htop unzip zip \
 network-manager pipewire-audio tlp tlp-rdw\
-libnotify-bin
+libnotify-bin zram-tools
 ```
 
 Kegunaan:
@@ -27,6 +27,7 @@ Kegunaan:
 * `tlp` → layanan utama penghemat daya.
 * `tlp-rdw` → integrasi untuk perangkat radio (Wi-Fi, Bluetooth, dll.).
 * `libnotify-bin` → notifikasi desktop
+* `zram-tools` → swap di dalam RAM
 
 ### 3. konfigurasi
 
@@ -54,7 +55,9 @@ Ubah config dengan mengubah :
 auto lo
 iface lo inet loopback
 ```
-3. Git
+
+
+#### Git
 
 Perintah :
 
@@ -67,3 +70,16 @@ git config --global init.defaultBranch main
 * Masukan sesuai email kamu
 * Untuk branch biarkan `main`
 
+#### Zram
+1. Edit file: `sudo nano /etc/default/zramswap`
+2. konfigurasi:
+```bash
+ALGO=zstd
+PERCENT=50
+PRIORITY=100
+```
+3. Aktifkan service zram
+```bash
+sudo systemctl enable zramswap
+sudo systemctl start zramswap
+```
