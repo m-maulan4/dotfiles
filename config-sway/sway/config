@@ -74,6 +74,7 @@ for_window [app_id="foot" title="nmtui"] floating enable
 input type:keyboard {
     xkb_layout us
     repeat_delay 500
+    repeat_rate 20
 }
 
 # Touchpad
