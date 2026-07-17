@@ -1,88 +1,81 @@
 {
-    "layer": "top",
-    "position": "top",
-    "margin": 6,
-    "exclusive": true,
-    "modules-left": [
-        "sway/workspaces",
-        "sway/window"
-    ],
-    "modules-right": [
-        "pulseaudio",
-        "backlight",
-        "network",
-        "cpu",
-        "temperature",
-        "memory",
-        "battery",
-        "clock",
-        "custom/power",
-        "tray"
-    ],
-    "sway/workspaces": {
-        "disable-scroll": true,
-        "all-outputs": true,
-        "format": "{icon}"
-    },
-    "sway/mode": {
-        "format": " {}"
-    },
-    "sway/window": {
-        "format": "{}"
-    },
-    "clock": {
-        "format": " {:%d/%m/%Y %H:%M}",
-        "tooltip-format": "{:%A, %d %B %Y}"
-    },
-    "cpu": {
-        "format": " {usage}%"
-    },
-    "memory": {
-        "format": " {}%"
-    },
-    "temperature": {
-        "format": " {temperatureC}°C"
-    },
-    "battery": {
-        "format": "{icon} {capacity}%",
-        "format-icons": [
-            "",
-            "",
-            "",
-            "",
-            ""
-        ]
-    },
-    "network": {
-        "format-wifi": " {essid}",
-        "format-ethernet": " LAN",
-        "format-disconnected": "󰖪 offline"
-    },
-    "pulseaudio": {
-        "format": " {volume}%",
-        "format-muted": " muted",
-        "on-click": "pavucontrol",
-        "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ --limit 1.0",
-        "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
-    },
-    "custom/power": {
-        "format": "⏻",
-        "tooltip": false,
-        "menu": "on-click",
-        "menu-file": "~/.config/waybar/power_menu.xml",
-        "menu-actions": {
-            "shutdown": "systemctl poweroff",
-            "reboot": "systemctl reboot",
-            "suspend": "systemctl suspend",
-            "logout": "swaymsg exit"
-        }
-    },
-    "backlight": {
-        "format": "{percent}% ",
-        "on-scroll-up": "brightnessctl set +5%",
-        "on-scroll-down": "brightnessctl set 5%-"
-    },
-    "tray": {
-        "spacing": 10
+  "layer": "top",
+  "position": "top",
+  "margin-top": 8,
+  "margin-bottom": 8,
+  "margin-left": 20,
+  "margin-right": 20,
+  "exclusive": true,
+  "modules-left": ["sway/workspaces", "sway/window"],
+  "modules-center": ["clock"],
+  "modules-right": [
+    "pulseaudio",
+    "backlight",
+    "network",
+    "cpu",
+    "memory",
+    "battery",
+    "custom/power",
+    "tray"
+  ],
+  "sway/workspaces": {
+    "disable-scroll": true,
+    "all-outputs": true,
+    "format": "{icon}"
+  },
+  "sway/mode": {
+    "format": " {}"
+  },
+  "sway/window": {
+    "format": "{app_id}"
+  },
+  "clock": {
+    "format": "{:%H:%M}",
+    "tooltip-format": "{:%A, %d %B %Y}"
+  },
+  "cpu": {
+    "format": " {usage}%"
+  },
+  "memory": {
+    "format": " {}%"
+  },
+  "temperature": {
+    "format": " {temperatureC}°C"
+  },
+  "battery": {
+    "format": "{icon} {capacity}%",
+    "format-icons": ["", "", "", "", ""]
+  },
+  "network": {
+    "format-wifi": " {essid}",
+    "format-ethernet": " LAN",
+    "format-disconnected": "󰖪 offline"
+  },
+  "pulseaudio": {
+    "format": " {volume}%",
+    "format-muted": " muted",
+    "on-click": "pavucontrol",
+    "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ --limit 1.0",
+    "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+  },
+  "custom/power": {
+    "format": "⏻",
+    "tooltip": false,
+    "menu": "on-click",
+    "menu-file": "~/.config/waybar/power_menu.xml",
+    "menu-actions": {
+      "shutdown": "systemctl poweroff",
+      "reboot": "systemctl reboot",
+      "suspend": "systemctl suspend",
+      "logout": "swaymsg exit"
     }
+  },
+  "backlight": {
+    "format": " {percent}%",
+    "on-scroll-up": "brightnessctl set +5%",
+    "on-scroll-down": "brightnessctl set 5%-"
+  },
+  "tray": {
+    "spacing": 10
+  }
 }

@@ -1,6 +1,6 @@
 * {
     font-family: "monospace";
-    font-size: 14px;
+    font-size: 16px;
     font-weight: bold;
 }
 
@@ -10,41 +10,42 @@ window#waybar {
     color: #f8f8f2;
 }
 
+.modules-left,.modules-center,.modules-right{
+    background: rgba(255, 255, 255, 0.1);
+    color: #f8f8f2;
+    padding: 0px 8px;
+    border-radius: 6px;
+}
+
 /* Workspaces */
 #workspaces button {
-    background: rgba(255, 255, 255, 0.1);
     color: #ffffff;
     margin-right: 4px;
     padding: 0px 4px;
     border-radius: 6px;
-    
 }
 
+#workspaces button:hover {
+    background: transparent;
+    box-shadow: none;
+    text-shadow: none;
+    border-color:rgba(255, 255, 255, 0.3);
+}
 #workspaces button.focused {
     background: rgba(255, 255, 255, 0.3);
-    color: #ffffff;
+    border-color: transparent;
 }
-
-
-#workspaces button.urgent {
-    background: #ff5555;
-    color: #f8f8f2;
-}
-
 
 /* Window title */
 #window {
-
-    background: rgba(255, 255, 255, 0.1);
     color: #f8f8f2;
-    margin-left: 1rem;
     padding: 0px 12px;
     border-radius: 6px;
 }
 window#waybar.empty #window {
     background-color: transparent;
-    padding: 0;
-    margin: 0;
+    padding: 0px;
+    margin: 0px;
 }
 
 
@@ -55,96 +56,19 @@ window#waybar.empty #window {
 #temperature,
 #memory,
 #battery,
-#clock,
 #custom-power,
 #backlight,
 #tray {
-    padding: 0px 6px;
-}
-
-.modules-right{
-    background: rgba(255, 255, 255, 0.1);
-    color: #f8f8f2;
-    padding: 0px 8px;
-    border-radius: 6px;
-}
-
-
-/* Dracula module colors */
-
-#clock {
-    color: #8be9fd;
-}
-
-
-#cpu {
-    color: #50fa7b;
-}
-
-
-#memory {
-    color: #bd93f9;
-}
-
-
-#temperature {
-    color: #ffb86c;
-}
-
-
-#backlight {
-    color: #ffb86c;
-}
-
-
-#battery {
-    color: #f1fa8c;
-}
-
-
-#battery.charging {
-    color: #50fa7b;
-}
-
-
-#battery.warning {
-    color: #ffb86c;
-}
-
-
-#battery.critical {
-    color: #ff5555;
-}
-
-
-#network {
-    color: #8be9fd;
-}
-
-
-#pulseaudio {
-    color: #ff79c6;
-}
-
-
-#pulseaudio.muted {
-    color: #6272a4;
+    padding: 0px 4px;
 }
 
 
 /* Power button */
 #custom-power {
-    color: #ff79c6;
+    color: rgb(255, 75, 75);
 }
 
 
 #custom-power:hover {
-    background: #ff79c6;
-    color: #282a36;
-}
-
-
-/* Tray */
-#tray {
-    color: #f8f8f2;
+    color: rgba(255, 75, 75, 0.7)
 }
