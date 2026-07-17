@@ -27,11 +27,9 @@ set $ws10 "10"
 # output HDMI-A-1 resolution 1920x1080 position 0,0
 
 # Wallpaper
-# output * bg ~/.config/sway/wallpaper.jpg fill
+exec_always --no-startup-id swaybg -i ~/.config/sway/bg.jpg -m fill
 
-output eDP-1 {
-    scale 1.3
-}
+output eDP-1 mode 1920x1080@60.020Hz pos 0 0 scale 1.3
 
 # =====================
 # Appearance
@@ -46,6 +44,7 @@ default_border pixel 1
 default_floating_border pixel 1
 smart_borders on
 
+#client.focused <border> <background> <text> <indicator> <child_border>
 client.focused #ffffff #ffffff #000000 #ffffff #ffffff
 
 focus_follows_mouse no
@@ -56,7 +55,6 @@ focus_follows_mouse no
 
 for_window [app_id="pavucontrol"] floating enable
 for_window [app_id="firefox" title="Picture-in-Picture"] sticky enable
-for_window [app_id="foot" title="nmtui"] floating enable
 
 # =====================
 # Idle
@@ -87,7 +85,6 @@ input type:touchpad {
 # Autostart
 # =====================
 
-exec_always --no-startup-id swaybg -i ~/.config/sway/bg.jpg -m fill
 exec_always --no-startup-id "pkill waybar; waybar"
 exec --no-startup-id mako
 
