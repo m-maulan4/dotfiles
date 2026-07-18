@@ -1,10 +1,7 @@
 {
   "layer": "top",
   "position": "top",
-  "margin-top": 8,
-  "margin-bottom": 8,
-  "margin-left": 20,
-  "margin-right": 20,
+  "margin": "8px 12px",
   "exclusive": true,
   "modules-left": ["sway/mode","sway/workspaces", "sway/window"],
   "modules-center": ["clock"],
