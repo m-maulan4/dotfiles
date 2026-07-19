@@ -118,6 +118,8 @@ bindsym $mod+Shift+e exec swaynag \
 # Window movement
 # =====================
 
+floating_modifier $mod normal
+
 # Focus
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
