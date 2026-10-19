@@ -1,97 +1,58 @@
-#!/bin/bash
+#!/bin/sh
+# /root/wifi-failover.sh
 
-TAG="PING"
-HOST1="1.1.1.1"
-HOST2="8.8.8.8"
-
-WAIT=5
-RETRY_WAIT=2
-CHECK_INTERVAL=10
-
-cek_ping() {
-    ping -c 1 -W 1 "$HOST1" >/dev/null 2>&1 ||
-    ping -c 1 -W 1 "$HOST2" >/dev/null 2>&1
-}
+PING_TARGET_1="1.1.1.1"
+PING_TARGET_2="8.8.8.8"
+PING_COUNT=3
+PING_TIMEOUT=2
+WIFINETS="wifinet1 wifinet2"
+WAIT_AFTER_RELOAD=8
 
 log() {
-    logger -t "$TAG" "$1"
+    # kirim ke syslog
+    logger -t wifi-failover "$*"
+    # tetap tampil di layar saat dijalankan manual
+    echo "$*"
 }
 
-while true; do
+check_ping() {
+    ping -c "$PING_COUNT" -W "$PING_TIMEOUT" "$PING_TARGET_1" >/dev/null 2>&1 && return 0
+    ping -c "$PING_COUNT" -W "$PING_TIMEOUT" "$PING_TARGET_2" >/dev/null 2>&1 && return 0
+    return 1
+}
 
-    # 1. Cek koneksi internet
-    if cek_ping; then
-        sleep "$CHECK_INTERVAL"
-        continue
-    fi
-
-    log "Internet gagal, menjalankan wifi reload"
-
-    # 2. Reload Wi-Fi
-    wifi reload
-    sleep "$WAIT"
-
-    # 3. Cek koneksi setelah reload
-    if cek_ping; then
-        log "Internet pulih setelah wifi reload"
-        continue
-    fi
-
-    log "Masih gagal, memeriksa konfigurasi Wi-Fi"
-
-    # 4. Pastikan kedua section tersedia
-    if ! uci -q get wireless.wifinet1 >/dev/null 2>&1 ||
-       ! uci -q get wireless.wifinet2 >/dev/null 2>&1; then
-        log "ERROR: wireless.wifinet1 atau wifinet2 tidak ditemukan"
-        sleep "$RETRY_WAIT"
-        continue
-    fi
-
-    # 5. Tentukan target berdasarkan konfigurasi
-    WIFI1=$(uci -q get wireless.wifinet1.disabled)
-    WIFI2=$(uci -q get wireless.wifinet2.disabled)
-
-    if [ "$WIFI1" = "1" ]; then
-        TARGET="wireless.wifinet1"
-        OTHER="wireless.wifinet2"
-    elif [ "$WIFI2" = "1" ]; then
-        TARGET="wireless.wifinet2"
-        OTHER="wireless.wifinet1"
-    else
-        # Keduanya aktif: bergantian berdasarkan target sebelumnya
-        LAST=$(uci -q get system.ping_recovery.last)
-
-        if [ "$LAST" = "wireless.wifinet1" ]; then
-            TARGET="wireless.wifinet2"
-            OTHER="wireless.wifinet1"
+activate_only() {
+    local target="$1"
+    for w in $WIFINETS; do
+        if [ "$w" = "$target" ]; then
+            uci set wireless.$w.disabled='0'
         else
-            TARGET="wireless.wifinet1"
-            OTHER="wireless.wifinet2"
+            uci set wireless.$w.disabled='1'
         fi
-    fi
-
-    # 6. Simpan target agar percobaan berikutnya bergantian
-    uci set system.ping_recovery=ping_recovery
-    uci set system.ping_recovery.last="$TARGET"
-    uci commit system
-
-    # 7. Aktifkan target dan nonaktifkan lainnya
-    uci set "$TARGET.disabled=0"
-    uci set "$OTHER.disabled=1"
+    done
     uci commit wireless
-
-    log "Mengaktifkan $TARGET dan menonaktifkan $OTHER"
-
-    # 8. Reload dan tunggu koneksi
     wifi reload
-    sleep "$WAIT"
+    sleep "$WAIT_AFTER_RELOAD"
+}
 
-    # 9. Cek hasil
-    if cek_ping; then
-        log "Internet pulih menggunakan $TARGET"
-    else
-        log "Internet masih gagal, mengulang proses dari awal"
-        sleep "$RETRY_WAIT"
+# --- Main ---
+if check_ping; then
+    log "Koneksi OK, tidak ada rotasi."
+    exit 0
+fi
+
+log "Koneksi gagal. Mulai rotasi wifinet..."
+
+for w in $WIFINETS; do
+    log "Mencoba aktifkan $w ..."
+    activate_only "$w"
+
+    if check_ping; then
+        log "BERHASIL via $w"
+        exit 0
     fi
-
+    log "$w gagal ping."
 done
+
+log "SEMUA wifinet gagal. Tidak ada koneksi."
+exit 1
