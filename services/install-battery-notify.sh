@@ -113,6 +113,7 @@ while read -r SESSION; do
         DBUS_SESSION_BUS_ADDRESS="$BUS" \
         notify-send \
         -u critical \
+        -t 3000 \
         -i battery-caution \
         "⚠️ Baterai Rendah" \
         "Baterai laptop tinggal ${BATTERY}%!" \
