@@ -36,7 +36,7 @@ interface=$(
 
 # Tampilkan status koneksi
 if [[ -z "$interface" ]]; then
-    echo "%{F${ALERT}} Internet%{F-}"
+    echo "%{F${ALERT}}%{F-} Internet"
 
 elif [[ "$interface" =~ ^wl ]]; then
     # Ambil SSID Wi-Fi aktif dari NetworkManager
@@ -50,11 +50,11 @@ elif [[ "$interface" =~ ^wl ]]; then
 
     # Tampilkan nama Wi-Fi
     if [[ -n "$SSID" ]]; then
-        echo "%{F${PRIMARY}} ${SSID}%{F-}"
+        echo "%{F${PRIMARY}}%{F-} ${SSID}"
     else
-        echo "%{F${ALERT}} Wi-Fi%{F-}"
+        echo "%{F${ALERT}}%{F-} Wi-Fi"
     fi
 
 else
-    echo "%{F${PRIMARY}} Ethernet%{F-}"
+    echo "%{F${PRIMARY}}%{F-} Ethernet"
 fi
